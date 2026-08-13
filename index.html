@@ -294,7 +294,7 @@
       </div>
     </section>
 
-    <section class="section awards" id="awards" aria-labelledby="awards-title">
+    <section class="section awards" id="awards" aria-labelledby="awards-title" data-award-explorer>
       <div class="container">
         <div class="section-heading heading-row" data-reveal>
           <div>
@@ -302,6 +302,21 @@
             <h2 id="awards-title">Awards &amp; Honors</h2>
           </div>
           <p>Nine awards and honors in AI, engineering design, entrepreneurship, internships, and mentoring (2022–2025).</p>
+        </div>
+
+        <div class="award-explorer" data-reveal>
+          <div class="award-explorer-copy">
+            <p>Explore connections</p>
+            <strong>Highlight awards by shared keyword</strong>
+          </div>
+          <div class="award-explorer-controls" role="group" aria-label="Highlight awards by keyword">
+            <button class="award-keyword award-keyword-global" type="button" data-award-keyword="competition" aria-pressed="false">Competition <span aria-hidden="true">5</span></button>
+            <button class="award-keyword award-keyword-global" type="button" data-award-keyword="idea-design" aria-pressed="false">Idea &amp; Design <span aria-hidden="true">3</span></button>
+            <button class="award-keyword award-keyword-global" type="button" data-award-keyword="startup" aria-pressed="false">Startup <span aria-hidden="true">2</span></button>
+            <button class="award-keyword award-keyword-global" type="button" data-award-keyword="big-data" aria-pressed="false">Big Data <span aria-hidden="true">2</span></button>
+            <button class="award-reset" type="button" data-award-reset disabled>Reset</button>
+          </div>
+          <p class="award-explorer-status" role="status" aria-live="polite" aria-atomic="true" data-award-status>All 9 awards are visible. Select a keyword to highlight related awards.</p>
         </div>
 
         <section class="award-showcase" aria-labelledby="selected-honors-title" data-reveal>
@@ -314,27 +329,40 @@
           </div>
 
           <div class="award-showcase-grid">
-            <a class="award-highlight" href="https://drive.google.com/file/d/1kO6Xkys44VQNHbP-rk2Lkp_qfBIKYrZK/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+            <article class="award-highlight" data-award-entry data-award-keywords="competition national">
               <time datetime="2024">2024</time>
               <h4>Grand Prize</h4>
               <p>National Contest of Champions</p>
               <span class="award-institution">Seoul National University</span>
-              <span class="award-certificate">View certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span>
-            </a>
-            <a class="award-highlight" href="https://drive.google.com/file/d/1rgu5m_B93yfGQ3xtOv-RXnajRrwXQpjj/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+              <div class="award-keywords" role="group" aria-label="Keywords for Grand Prize">
+                <button class="award-keyword" type="button" data-award-keyword="competition" aria-pressed="false">Competition</button>
+                <button class="award-keyword" type="button" data-award-keyword="national" aria-pressed="false">National</button>
+              </div>
+              <a class="award-certificate" href="https://drive.google.com/file/d/1kO6Xkys44VQNHbP-rk2Lkp_qfBIKYrZK/view?usp=sharing" target="_blank" rel="noopener noreferrer">View certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+            </article>
+            <article class="award-highlight" data-award-entry data-award-keywords="startup big-data idea-design">
               <time datetime="2023">2023</time>
               <h4>President’s Award</h4>
               <p>Startup Idea Challenge for Social Big Data Analysis</p>
               <span class="award-institution">University of Seoul</span>
-              <span class="award-certificate">View certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span>
-            </a>
-            <a class="award-highlight" href="https://drive.google.com/file/d/1W9fOavgSTW47Xhu2rn7ZIB0rzlEQVl99/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+              <div class="award-keywords" role="group" aria-label="Keywords for President’s Award">
+                <button class="award-keyword" type="button" data-award-keyword="startup" aria-pressed="false">Startup</button>
+                <button class="award-keyword" type="button" data-award-keyword="big-data" aria-pressed="false">Big Data</button>
+                <button class="award-keyword" type="button" data-award-keyword="idea-design" aria-pressed="false">Idea &amp; Design</button>
+              </div>
+              <a class="award-certificate" href="https://drive.google.com/file/d/1rgu5m_B93yfGQ3xtOv-RXnajRrwXQpjj/view?usp=sharing" target="_blank" rel="noopener noreferrer">View certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+            </article>
+            <article class="award-highlight" data-award-entry data-award-keywords="competition idea-design">
               <time datetime="2022">2022</time>
               <h4>Gold Prize</h4>
               <p>Creative Engineering Design Contest</p>
               <span class="award-institution">Jeonbuk National University</span>
-              <span class="award-certificate">View certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span>
-            </a>
+              <div class="award-keywords" role="group" aria-label="Keywords for Gold Prize">
+                <button class="award-keyword" type="button" data-award-keyword="competition" aria-pressed="false">Competition</button>
+                <button class="award-keyword" type="button" data-award-keyword="idea-design" aria-pressed="false">Idea &amp; Design</button>
+              </div>
+              <a class="award-certificate" href="https://drive.google.com/file/d/1W9fOavgSTW47Xhu2rn7ZIB0rzlEQVl99/view?usp=sharing" target="_blank" rel="noopener noreferrer">View certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+            </article>
           </div>
         </section>
 
@@ -348,12 +376,12 @@
           </div>
 
           <ul class="award-list">
-            <li><a href="https://drive.google.com/file/d/1r95gcIKCA3kaRhlyfpQQwm-DvO-0gbQ3/view?usp=sharing" target="_blank" rel="noopener noreferrer"><time datetime="2025">2025</time><span class="award-list-title"><strong>Excellence Award</strong><small>Mentoring Program</small></span><span class="award-list-institution">Jeonbuk National University</span><span class="award-list-link">Certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span></a></li>
-            <li><a href="https://drive.google.com/file/d/15AT0RC0QEVUcM3RWWNsA09WSCdyaFNg6/view?usp=sharing" target="_blank" rel="noopener noreferrer"><time datetime="2024">2024</time><span class="award-list-title"><strong>Outstanding Intern</strong><small>Big Data Innovation Convergence College</small></span><span class="award-list-institution">Seoul National University</span><span class="award-list-link">Certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span></a></li>
-            <li><a href="https://drive.google.com/file/d/1FZHtIpCoQ7vLniEOg2a4G02Lfuu7Y_o_/view?usp=sharing" target="_blank" rel="noopener noreferrer"><time datetime="2024">2024</time><span class="award-list-title"><strong>Merit Award</strong><small>Artificial Intelligence Online Competition</small></span><span class="award-list-institution">Jeonbuk National University</span><span class="award-list-link">Certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span></a></li>
-            <li><a href="https://drive.google.com/file/d/1brpWsnnRdAjCLeJfviT_7ul_UKODipJH/view?usp=sharing" target="_blank" rel="noopener noreferrer"><time datetime="2024">2024</time><span class="award-list-title"><strong>Merit Award</strong><small>AWS DeepRacer Competition</small></span><span class="award-list-institution">Jeonbuk National University</span><span class="award-list-link">Certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span></a></li>
-            <li><a href="https://drive.google.com/file/d/1RIPpEwZvUsYLZSoKrhPimaLDBNiLjlBU/view?usp=sharing" target="_blank" rel="noopener noreferrer"><time datetime="2023">2023</time><span class="award-list-title"><strong>Excellence Award</strong><small>Smart Device Idea Contest</small></span><span class="award-list-institution">Jeonbuk National University</span><span class="award-list-link">Certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span></a></li>
-            <li><a href="https://drive.google.com/file/d/1c8mtMV_9XbHVFnO53JmME6V5y7xyKyxa/view?usp=sharing" target="_blank" rel="noopener noreferrer"><time datetime="2023">2023</time><span class="award-list-title"><strong>Bronze Prize</strong><small>TBM Startup Camp</small></span><span class="award-list-institution">Jeonbuk National University</span><span class="award-list-link">Certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span></a></li>
+            <li class="award-list-item" data-award-entry data-award-keywords="mentoring"><time datetime="2025">2025</time><span class="award-list-title"><strong>Excellence Award</strong><small>Mentoring Program</small></span><span class="award-list-institution">Jeonbuk National University</span><div class="award-keywords" role="group" aria-label="Keywords for Mentoring Program Excellence Award"><button class="award-keyword" type="button" data-award-keyword="mentoring" aria-pressed="false">Mentoring</button></div><a class="award-list-link" href="https://drive.google.com/file/d/1r95gcIKCA3kaRhlyfpQQwm-DvO-0gbQ3/view?usp=sharing" target="_blank" rel="noopener noreferrer">Certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+            <li class="award-list-item" data-award-entry data-award-keywords="internship big-data"><time datetime="2024">2024</time><span class="award-list-title"><strong>Outstanding Intern</strong><small>Big Data Innovation Convergence College</small></span><span class="award-list-institution">Seoul National University</span><div class="award-keywords" role="group" aria-label="Keywords for Outstanding Intern"><button class="award-keyword" type="button" data-award-keyword="internship" aria-pressed="false">Internship</button><button class="award-keyword" type="button" data-award-keyword="big-data" aria-pressed="false">Big Data</button></div><a class="award-list-link" href="https://drive.google.com/file/d/15AT0RC0QEVUcM3RWWNsA09WSCdyaFNg6/view?usp=sharing" target="_blank" rel="noopener noreferrer">Certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+            <li class="award-list-item" data-award-entry data-award-keywords="artificial-intelligence competition"><time datetime="2024">2024</time><span class="award-list-title"><strong>Merit Award</strong><small>Artificial Intelligence Online Competition</small></span><span class="award-list-institution">Jeonbuk National University</span><div class="award-keywords" role="group" aria-label="Keywords for Artificial Intelligence Online Competition Merit Award"><button class="award-keyword" type="button" data-award-keyword="artificial-intelligence" aria-pressed="false">Artificial Intelligence</button><button class="award-keyword" type="button" data-award-keyword="competition" aria-pressed="false">Competition</button></div><a class="award-list-link" href="https://drive.google.com/file/d/1FZHtIpCoQ7vLniEOg2a4G02Lfuu7Y_o_/view?usp=sharing" target="_blank" rel="noopener noreferrer">Certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+            <li class="award-list-item" data-award-entry data-award-keywords="aws-deepracer competition"><time datetime="2024">2024</time><span class="award-list-title"><strong>Merit Award</strong><small>AWS DeepRacer Competition</small></span><span class="award-list-institution">Jeonbuk National University</span><div class="award-keywords" role="group" aria-label="Keywords for AWS DeepRacer Competition Merit Award"><button class="award-keyword" type="button" data-award-keyword="aws-deepracer" aria-pressed="false">AWS DeepRacer</button><button class="award-keyword" type="button" data-award-keyword="competition" aria-pressed="false">Competition</button></div><a class="award-list-link" href="https://drive.google.com/file/d/1brpWsnnRdAjCLeJfviT_7ul_UKODipJH/view?usp=sharing" target="_blank" rel="noopener noreferrer">Certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+            <li class="award-list-item" data-award-entry data-award-keywords="smart-device idea-design competition"><time datetime="2023">2023</time><span class="award-list-title"><strong>Excellence Award</strong><small>Smart Device Idea Contest</small></span><span class="award-list-institution">Jeonbuk National University</span><div class="award-keywords" role="group" aria-label="Keywords for Smart Device Idea Contest Excellence Award"><button class="award-keyword" type="button" data-award-keyword="smart-device" aria-pressed="false">Smart Device</button><button class="award-keyword" type="button" data-award-keyword="idea-design" aria-pressed="false">Idea &amp; Design</button><button class="award-keyword" type="button" data-award-keyword="competition" aria-pressed="false">Competition</button></div><a class="award-list-link" href="https://drive.google.com/file/d/1RIPpEwZvUsYLZSoKrhPimaLDBNiLjlBU/view?usp=sharing" target="_blank" rel="noopener noreferrer">Certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+            <li class="award-list-item" data-award-entry data-award-keywords="startup"><time datetime="2023">2023</time><span class="award-list-title"><strong>Bronze Prize</strong><small>TBM Startup Camp</small></span><span class="award-list-institution">Jeonbuk National University</span><div class="award-keywords" role="group" aria-label="Keywords for TBM Startup Camp Bronze Prize"><button class="award-keyword" type="button" data-award-keyword="startup" aria-pressed="false">Startup</button></div><a class="award-list-link" href="https://drive.google.com/file/d/1c8mtMV_9XbHVFnO53JmME6V5y7xyKyxa/view?usp=sharing" target="_blank" rel="noopener noreferrer">Certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
           </ul>
         </section>
       </div>

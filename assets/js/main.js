@@ -159,6 +159,79 @@
   const initialFilter = filters.find((button) => button.getAttribute('aria-pressed') === 'true') || filters[0];
   applyFilter(initialFilter, false);
 
+  const awardExplorer = document.querySelector('[data-award-explorer]');
+  const awardEntries = [...(awardExplorer?.querySelectorAll('[data-award-entry]') ?? [])];
+  const awardKeywordButtons = [...(awardExplorer?.querySelectorAll('[data-award-keyword]') ?? [])];
+  const awardReset = awardExplorer?.querySelector('[data-award-reset]');
+  const awardStatus = awardExplorer?.querySelector('[data-award-status]');
+  const awardKeywordLabels = {
+    competition: 'Competition',
+    national: 'National',
+    startup: 'Startup',
+    'big-data': 'Big Data',
+    'idea-design': 'Idea & Design',
+    mentoring: 'Mentoring',
+    internship: 'Internship',
+    'artificial-intelligence': 'Artificial Intelligence',
+    'aws-deepracer': 'AWS DeepRacer',
+    'smart-device': 'Smart Device'
+  };
+
+  const getAwardKeywords = (entry) => (entry.dataset.awardKeywords || '')
+    .split(/\s+/)
+    .filter(Boolean);
+
+  const applyAwardKeyword = (keyword = '', announce = true) => {
+    if (!awardExplorer) return;
+
+    if (keyword) {
+      awardExplorer.dataset.activeKeyword = keyword;
+    } else {
+      delete awardExplorer.dataset.activeKeyword;
+    }
+
+    awardKeywordButtons.forEach((button) => {
+      button.setAttribute('aria-pressed', String(Boolean(keyword) && button.dataset.awardKeyword === keyword));
+    });
+
+    let matchingCount = 0;
+    awardEntries.forEach((entry) => {
+      const matches = Boolean(keyword) && getAwardKeywords(entry).includes(keyword);
+      entry.classList.toggle('is-keyword-match', matches);
+      entry.classList.toggle('is-keyword-muted', Boolean(keyword) && !matches);
+      if (matches) matchingCount += 1;
+    });
+
+    if (awardReset) awardReset.disabled = !keyword;
+    if (!awardStatus) return;
+
+    const message = keyword
+      ? `${awardKeywordLabels[keyword] || keyword} highlights ${matchingCount} of ${awardEntries.length} awards. All awards remain visible.`
+      : `All ${awardEntries.length} awards are visible. Select a keyword to highlight related awards.`;
+
+    if (announce || awardStatus.textContent !== message) awardStatus.textContent = message;
+  };
+
+  awardKeywordButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const keyword = button.dataset.awardKeyword || '';
+      const nextKeyword = awardExplorer?.dataset.activeKeyword === keyword ? '' : keyword;
+      applyAwardKeyword(nextKeyword);
+    });
+  });
+
+  awardExplorer?.querySelectorAll('.award-keyword-global').forEach((button) => {
+    const count = awardEntries.filter((entry) => getAwardKeywords(entry).includes(button.dataset.awardKeyword)).length;
+    const countElement = button.querySelector('span');
+    if (countElement) countElement.textContent = String(count);
+  });
+
+  awardReset?.addEventListener('click', () => applyAwardKeyword(''));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && awardExplorer?.dataset.activeKeyword) applyAwardKeyword('');
+  });
+  applyAwardKeyword('', false);
+
   const revealItems = document.querySelectorAll('[data-reveal]');
   if (!reduceMotion && 'IntersectionObserver' in window && revealItems.length) {
     try {
