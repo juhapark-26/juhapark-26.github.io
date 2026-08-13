@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Juha Park — M.S. student at Jeonbuk National University researching remote photoplethysmography, physiological computing, and medical image analysis.">
-  <meta name="theme-color" content="#f7f4ee" data-theme-color>
+  <meta name="theme-color" content="#f4f7fc" data-theme-color>
   <meta property="og:title" content="Juha Park | Physiological Computing Researcher">
   <meta property="og:description" content="Research in remote photoplethysmography, non-contact stress estimation, and medical image analysis.">
   <meta property="og:type" content="website">
@@ -23,7 +23,7 @@
 
         const themeColor = document.querySelector('[data-theme-color]');
         const syncThemeColor = () => {
-          if (themeColor) themeColor.content = root.dataset.theme === 'light' ? '#f7f4ee' : '#17201d';
+          if (themeColor) themeColor.content = root.dataset.theme === 'light' ? '#f4f7fc' : '#081426';
         };
         syncThemeColor();
         new MutationObserver(syncThemeColor).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
@@ -99,10 +99,10 @@
           </div>
 
           <div class="research-tags" aria-label="Research interests">
-            <span>Remote PPG</span>
-            <span>Stress Estimation</span>
-            <span>Egocentric Vision</span>
-            <span>Medical Imaging</span>
+            <span data-tone="sensing">Remote PPG</span>
+            <span data-tone="human">Stress Estimation</span>
+            <span data-tone="vision">Egocentric Vision</span>
+            <span data-tone="medical">Medical Imaging</span>
           </div>
 
           <div class="hero-actions">
@@ -169,7 +169,7 @@
               <h3>PulsePath: Two-Stage Generative Waveform Refinement for Robust Remote Photoplethysmography Estimation</h3>
               <p class="authors"><strong>Juha Park</strong>, Seungmin Oh, Sang Jun Lee*</p>
               <p class="paper-summary">A two-stage framework combining flow matching and residual diffusion to refine robust rPPG waveforms.</p>
-              <div class="paper-tags"><span>Remote PPG</span><span>Generative Modeling</span><span>Waveform Refinement</span></div>
+              <div class="paper-tags"><span data-tone="sensing">Remote PPG</span><span data-tone="method">Generative Modeling</span><span data-tone="sensing">Waveform Refinement</span></div>
               <span class="status-badge">UNDER REVIEW</span>
             </div>
           </article>
@@ -181,7 +181,7 @@
               <h3>BEAT: Bottleneck-Enhanced Adaptive Temporal Learning for Heart Rate Estimation from Egocentric NIR Eye Videos</h3>
               <p class="authors"><strong>Juha Park</strong>, Sang Jun Lee*</p>
               <p class="paper-summary">Temporal learning for contact-free heart-rate sensing in the challenging egocentric near-infrared eye setting.</p>
-              <div class="paper-tags"><span>Egocentric Vision</span><span>Heart Rate</span><span>Wearable AI</span></div>
+              <div class="paper-tags"><span data-tone="vision">Egocentric Vision</span><span data-tone="sensing">Heart Rate</span><span data-tone="human">Wearable AI</span></div>
               <span class="status-badge status-blue">ECCV WORKSHOP</span>
             </div>
           </article>
@@ -193,7 +193,7 @@
               <h3>PRISSM: PRV-Guided SSM for Non-contact Stress Estimation</h3>
               <p class="authors"><strong>Juha Park</strong>, Jiho Choi, Sang Jun Lee*</p>
               <p class="paper-summary">Pulse-rate-variability guidance meets selective state-space modeling for camera-based stress recognition.</p>
-              <div class="paper-tags"><span>Stress Estimation</span><span>State Space Model</span><span>rPPG</span></div>
+              <div class="paper-tags"><span data-tone="human">Stress Estimation</span><span data-tone="method">State Space Model</span><span data-tone="sensing">rPPG</span></div>
               <div class="paper-links"><a href="https://github.com/juhapark-26/PRISSM" target="_blank" rel="noreferrer">Code <span>↗</span></a></div>
             </div>
           </article>
@@ -205,7 +205,7 @@
               <h3>Weighted Knowledge Distillation for Semi-Supervised Segmentation of Maxillary Sinus in Panoramic X-ray Images</h3>
               <p class="authors"><strong>Juha Park</strong>, Jiho Choi, Jong Pil Yun, Yong Chan Park, Han-Gyeol Yeom, Byung-Do Lee, Sang Jun Lee*</p>
               <p class="paper-summary">A semi-supervised framework that uses weighted knowledge distillation to suppress unreliable signals from teacher–student structural mismatches and SinusCycle-GAN to refine pseudo-labels.</p>
-              <div class="paper-tags"><span>Medical Imaging</span><span>Knowledge Distillation</span><span>Segmentation</span></div>
+              <div class="paper-tags"><span data-tone="medical">Medical Imaging</span><span data-tone="method">Knowledge Distillation</span><span data-tone="vision">Segmentation</span></div>
               <div class="paper-links"><a href="https://doi.org/10.1038/s41598-026-57717-6" target="_blank" rel="noreferrer">Paper <span>↗</span></a></div>
             </div>
           </article>
@@ -217,7 +217,7 @@
               <h3>Attention-based U-Net Transformer for Segmentation of Maxillary Sinus Regions in Panoramic X-ray Images</h3>
               <p class="authors"><strong>Juha Park</strong>, Jiho Choi, Jong Pil Yun, Han-Gyeol Yeom, Byung-Do Lee*, Sang Jun Lee*</p>
               <p class="paper-summary">An attention-enhanced U-Net transformer for delineating maxillary sinus regions in dental panoramic radiographs.</p>
-              <div class="paper-tags"><span>Panoramic X-ray</span><span>U-Net</span><span>Transformer</span></div>
+              <div class="paper-tags"><span data-tone="medical">Panoramic X-ray</span><span data-tone="vision">U-Net</span><span data-tone="method">Transformer</span></div>
               <div class="paper-links"><a href="https://doi.org/10.14372/IEMEK.2025.20.2.83" target="_blank" rel="noreferrer">Paper <span>↗</span></a></div>
             </div>
           </article>
@@ -229,7 +229,7 @@
               <h3>Channel Attention Based Knowledge Distillation for Segmentation of Country Club Driving Environments</h3>
               <p class="authors">Yunseok Yang, Jiho Choi, <strong>Juha Park</strong>, Sang Jun Lee*</p>
               <p class="paper-summary">A lightweight student network learns channel-aware feature importance for outdoor driving-scene segmentation.</p>
-              <div class="paper-tags"><span>Semantic Segmentation</span><span>Channel Attention</span><span>Distillation</span></div>
+              <div class="paper-tags"><span data-tone="vision">Semantic Segmentation</span><span data-tone="method">Channel Attention</span><span data-tone="method">Distillation</span></div>
               <div class="paper-links"><a href="https://doi.org/10.5302/J.ICROS.2025.25.0124" target="_blank" rel="noreferrer">Paper <span>↗</span></a></div>
             </div>
           </article>
@@ -241,7 +241,7 @@
               <h3>Maxillary Sinus Detection in Panoramic X-ray Images Using an Attention-Based U-Net Transformer</h3>
               <p class="authors"><strong>Juha Park</strong>, Jiho Choi, Jong Pil Yun, Han-Gyeol Yeom, Byung-Do Lee, Sang Jun Lee*</p>
               <p class="paper-summary conference-detail">Jeju Gravel Hotel · Nov 13–16, 2024</p>
-              <div class="paper-tags"><span class="award-tag">Outstanding Paper Award</span><span>Domestic Conference</span></div>
+              <div class="paper-tags"><span class="award-tag" data-tone="award">Outstanding Paper Award</span><span data-tone="medical">Domestic Conference</span></div>
               <div class="paper-links"><a href="https://drive.google.com/file/d/1rdbNjetvJwWYzXifVCqCMQUooXWzAVH1/view?usp=sharing" target="_blank" rel="noreferrer">Award <span>↗</span></a></div>
             </div>
           </article>
@@ -253,7 +253,7 @@
               <h3>Channel Attention Based Knowledge Distillation for Segmentation of Country Club Driving Environments</h3>
               <p class="authors">Yunseok Yang, Jiho Choi, <strong>Juha Park</strong>, Sang Jun Lee*</p>
               <p class="paper-summary conference-detail">Jeonbuk National University International Convention Center · Jun 25–27, 2025</p>
-              <div class="paper-tags"><span class="award-tag">Undergraduate Student Paper Award</span><span>Domestic Conference</span></div>
+              <div class="paper-tags"><span class="award-tag" data-tone="award">Undergraduate Student Paper Award</span><span data-tone="vision">Domestic Conference</span></div>
               <div class="paper-links"><a href="https://drive.google.com/file/d/1RWsY6p1ahTnfwQPt9HKbEDpkNfclALKT/view?usp=sharing" target="_blank" rel="noreferrer">Award <span>↗</span></a></div>
             </div>
           </article>
