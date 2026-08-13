@@ -301,7 +301,7 @@ svg { display: block; }
 .award-link { margin-top: auto; color: var(--subtle); font-family: var(--font-mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
 .award-card:hover .award-link { color: var(--award-color); }
 
-.award-explorer { display: grid; grid-template-columns: minmax(190px, .34fr) minmax(0, 1fr); column-gap: clamp(24px, 4vw, 52px); row-gap: 11px; align-items: center; margin: -18px 0 28px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); box-shadow: 0 10px 30px rgba(18, 43, 82, .08); }
+.award-explorer { display: grid; grid-template-columns: minmax(190px, .34fr) minmax(0, 1fr); column-gap: clamp(24px, 4vw, 52px); row-gap: 11px; align-items: center; margin: 42px 0 26px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); box-shadow: 0 10px 30px rgba(18, 43, 82, .08); }
 .award-explorer-copy p { margin: 0 0 2px; color: var(--accent); font-family: var(--font-mono); font-size: .66rem; letter-spacing: .09em; text-transform: uppercase; }
 .award-explorer-copy strong { display: block; font-size: .96rem; font-weight: 650; line-height: 1.35; }
 .award-explorer-controls { display: flex; flex-wrap: wrap; gap: 9px; align-items: center; }
@@ -370,6 +370,7 @@ svg { display: block; }
 .award-showcase :is(.award-keyword, .award-certificate):focus-visible { outline: 3px solid #fff; outline-offset: 3px; box-shadow: 0 0 0 6px rgba(5, 13, 28, .72); }
 
 .award-record { margin-top: 52px; }
+.award-explorer + .award-record { margin-top: 0; }
 .award-record-header { margin-bottom: 20px; }
 .award-record-header p { color: var(--accent); }
 .award-record-header h3 { font-size: clamp(1.8rem, 2.8vw, 2.45rem); }
@@ -506,7 +507,7 @@ svg { display: block; }
   .publication-content { padding: 26px 21px 31px; }
   .paper-tags { padding-right: 0; }
   .status-badge { position: static; display: inline-block; margin-top: 20px; }
-  .award-explorer { margin-top: -8px; padding: 18px 16px; }
+  .award-explorer { margin-top: 36px; padding: 18px 16px; }
   .award-explorer-controls { flex-wrap: nowrap; margin-right: -16px; padding: 1px 16px 10px 1px; overflow-x: auto; scroll-padding-left: 1px; scroll-snap-type: x proximity; scrollbar-width: thin; }
   .award-keyword-global, .award-reset { flex: 0 0 auto; min-height: 38px; scroll-snap-align: start; }
   .award-showcase { padding: 25px 18px; border-radius: 18px; }
