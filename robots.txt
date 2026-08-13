@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://juhapark-26.github.io/sitemap.xml
