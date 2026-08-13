@@ -174,7 +174,11 @@
     internship: 'Internship',
     'artificial-intelligence': 'Artificial Intelligence',
     'aws-deepracer': 'AWS DeepRacer',
-    'smart-device': 'Smart Device'
+    'smart-device': 'Smart Device',
+    'paper-award': 'Paper Award',
+    'medical-imaging': 'Medical Imaging',
+    'panoramic-x-ray': 'Panoramic X-ray',
+    'in-korean': 'In Korean'
   };
 
   const getAwardKeywords = (entry) => (entry.dataset.awardKeywords || '')
@@ -231,6 +235,24 @@
     if (event.key === 'Escape' && awardExplorer?.dataset.activeKeyword) applyAwardKeyword('');
   });
   applyAwardKeyword('', false);
+
+  const focusAwardTarget = () => {
+    if (!window.location.hash.startsWith('#award-')) return;
+    let targetId;
+    try {
+      targetId = decodeURIComponent(window.location.hash.slice(1));
+    } catch {
+      return;
+    }
+    const target = document.getElementById(targetId);
+    if (target?.matches('[data-award-entry][tabindex="-1"]')) target.focus({ preventScroll: true });
+  };
+
+  document.querySelectorAll('.award-jump-link').forEach((link) => {
+    link.addEventListener('click', () => window.requestAnimationFrame(focusAwardTarget));
+  });
+  window.addEventListener('hashchange', focusAwardTarget);
+  focusAwardTarget();
 
   const revealItems = document.querySelectorAll('[data-reveal]');
   if (!reduceMotion && 'IntersectionObserver' in window && revealItems.length) {

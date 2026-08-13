@@ -119,7 +119,7 @@ a { color: inherit; text-decoration: none; }
 button, summary { font: inherit; }
 button { color: inherit; }
 svg { display: block; }
-:where(a, button, summary):focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
 .container { width: min(calc(100% - 48px), var(--container)); margin-inline: auto; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
@@ -163,9 +163,9 @@ svg { display: block; }
 .research-snapshot > span { color: var(--accent); font-family: var(--font-mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
 .research-snapshot p { margin: 7px 0 5px; font-family: var(--font-display); font-size: clamp(1.18rem, 1.8vw, 1.38rem); line-height: 1.38; }
 .research-snapshot small { display: block; color: var(--muted); font-size: .88rem; line-height: 1.55; }
-.research-tags, .paper-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.research-tags, .paper-tags { --tag-ink: var(--muted); --tag-bg: var(--surface-2); --tag-border: var(--line-strong); display: flex; flex-wrap: wrap; gap: 8px; }
 .research-tags { margin-top: 19px; }
-:where(.research-tags, .paper-tags) span { --tag-ink: var(--muted); --tag-bg: var(--surface-2); --tag-border: var(--line-strong); color: var(--tag-ink); border: 1px solid var(--tag-border); background: var(--tag-bg); font-family: var(--font-sans); font-size: .78rem; font-weight: 650; letter-spacing: 0; line-height: 1.3; }
+.research-tags > span, .research-tags > a, .paper-tags > span, .paper-tags > a { color: var(--tag-ink); border: 1px solid var(--tag-border); background: var(--tag-bg); font-family: var(--font-sans); font-size: .78rem; font-weight: 650; letter-spacing: 0; line-height: 1.3; }
 .research-tags span { padding: 8px 12px; border-radius: 999px; }
 [data-tone="sensing"] { --tag-ink: var(--tone-sensing-ink); --tag-bg: var(--tone-sensing-bg); --tag-border: var(--tone-sensing-border); }
 [data-tone="medical"] { --tag-ink: var(--tone-medical-ink); --tag-bg: var(--tone-medical-bg); --tag-border: var(--tone-medical-border); }
@@ -235,7 +235,7 @@ svg { display: block; }
 .publication-card[data-primary="distillation"] { --topic-color: var(--tone-method-solid); --topic-soft: var(--tone-method-bg); }
 .publication-card:hover { background: var(--surface-2); box-shadow: 0 20px 46px rgba(18, 43, 82, .15); transform: translateY(-4px); }
 .publication-card[hidden] { display: none; }
-.publication-image { display: grid; place-items: center; min-height: 310px; padding: 26px; border-right: 1px solid var(--line); background: color-mix(in srgb, var(--topic-color) 12%, #f8fbff); overflow: hidden; }
+.publication-image { display: grid; place-items: center; min-height: 310px; padding: 26px; border-right: 1px solid var(--line); background: var(--surface-2); overflow: hidden; }
 .publication-image img { width: 100%; max-height: 250px; object-fit: contain; transition: transform .5s cubic-bezier(.2,.75,.2,1); }
 .publication-card:hover .publication-image img { transform: scale(1.025); }
 .publication-content { position: relative; padding: clamp(28px, 4vw, 48px); }
@@ -246,15 +246,17 @@ svg { display: block; }
 .authors strong { color: var(--text); font-weight: 600; text-decoration: underline; text-decoration-color: var(--topic-color); text-underline-offset: 3px; }
 .paper-summary { max-width: 720px; margin: 17px 0 0; color: var(--muted); font-size: .89rem; line-height: 1.65; }
 .paper-tags { margin-top: 20px; padding-right: 90px; }
-.paper-tags span { padding: 6px 10px; border-radius: 999px; }
+.paper-tags > span, .paper-tags > a { padding: 6px 10px; border-radius: 999px; }
 .paper-tags .award-tag { --tag-ink: var(--tone-award-ink); --tag-bg: var(--tone-award-bg); --tag-border: var(--tone-award-border); color: var(--tag-ink); border-color: var(--tag-border); background: var(--tag-bg); }
+.award-jump-link { display: inline-flex; align-items: center; gap: 7px; transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
+.award-jump-link:hover { border-color: var(--tone-award-solid); box-shadow: 0 5px 14px rgba(138, 90, 0, .15); transform: translateY(-1px); }
 .paper-links { display: flex; gap: 17px; margin-top: 22px; }
 .paper-links a { color: var(--text); font-family: var(--font-mono); font-size: .75rem; letter-spacing: .05em; text-transform: uppercase; border-bottom: 1px solid var(--topic-color); }
 .paper-links a:hover { color: var(--topic-color); }
 .status-badge { position: absolute; right: 29px; bottom: 29px; padding: 6px 9px; color: var(--tone-sensing-ink); border: 1px solid var(--tone-sensing-border); background: var(--tone-sensing-bg); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .1em; }
 .status-blue { color: var(--tone-vision-ink); border-color: var(--tone-vision-border); background: var(--tone-vision-bg); }
 .compact-paper { grid-template-columns: 200px 1fr; min-height: 250px; }
-.conference-index { display: flex; flex-direction: column; justify-content: space-between; padding: 31px; background: color-mix(in srgb, var(--topic-color) 8%, var(--surface)); border-right: 1px solid var(--line); }
+.conference-index { display: flex; flex-direction: column; justify-content: space-between; padding: 31px; background: var(--surface-2); border-right: 1px solid var(--line); }
 .conference-index span { color: var(--topic-color); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .14em; }
 .conference-index strong { color: var(--line-strong); font-family: var(--font-mono); font-size: 5rem; font-weight: 400; line-height: 1; }
 .conference-detail { display: block; margin: 17px 0 0; padding-top: 15px; color: var(--muted); border-top: 1px solid var(--line); font-size: .82rem; line-height: 1.65; }
@@ -285,12 +287,12 @@ svg { display: block; }
   transition: background-color .25s ease;
 }
 .awards[data-active-keyword] { background: var(--bg-deep); }
-.awards:is([data-active-keyword="competition"], [data-active-keyword="artificial-intelligence"], [data-active-keyword="aws-deepracer"]) { --award-active: var(--tone-sensing-solid); --award-soft: var(--tone-sensing-bg); --award-ink: var(--tone-sensing-ink); --award-border: var(--tone-sensing-border); }
-.awards:is([data-active-keyword="big-data"], [data-active-keyword="internship"]) { --award-active: var(--tone-medical-solid); --award-soft: var(--tone-medical-bg); --award-ink: var(--tone-medical-ink); --award-border: var(--tone-medical-border); }
-.awards:is([data-active-keyword="idea-design"], [data-active-keyword="smart-device"]) { --award-active: var(--tone-vision-solid); --award-soft: var(--tone-vision-bg); --award-ink: var(--tone-vision-ink); --award-border: var(--tone-vision-border); }
+.awards[data-active-keyword="competition"], .awards[data-active-keyword="artificial-intelligence"], .awards[data-active-keyword="aws-deepracer"] { --award-active: var(--tone-sensing-solid); --award-soft: var(--tone-sensing-bg); --award-ink: var(--tone-sensing-ink); --award-border: var(--tone-sensing-border); }
+.awards[data-active-keyword="big-data"], .awards[data-active-keyword="internship"], .awards[data-active-keyword="medical-imaging"], .awards[data-active-keyword="panoramic-x-ray"] { --award-active: var(--tone-medical-solid); --award-soft: var(--tone-medical-bg); --award-ink: var(--tone-medical-ink); --award-border: var(--tone-medical-border); }
+.awards[data-active-keyword="idea-design"], .awards[data-active-keyword="smart-device"] { --award-active: var(--tone-vision-solid); --award-soft: var(--tone-vision-bg); --award-ink: var(--tone-vision-ink); --award-border: var(--tone-vision-border); }
 .awards[data-active-keyword="startup"] { --award-active: var(--tone-method-solid); --award-soft: var(--tone-method-bg); --award-ink: var(--tone-method-ink); --award-border: var(--tone-method-border); }
-.awards[data-active-keyword="mentoring"] { --award-active: var(--tone-human-solid); --award-soft: var(--tone-human-bg); --award-ink: var(--tone-human-ink); --award-border: var(--tone-human-border); }
-.awards[data-active-keyword="national"] { --award-active: var(--tone-award-solid); --award-soft: var(--tone-award-bg); --award-ink: var(--tone-award-ink); --award-border: var(--tone-award-border); }
+.awards[data-active-keyword="mentoring"], .awards[data-active-keyword="in-korean"] { --award-active: var(--tone-human-solid); --award-soft: var(--tone-human-bg); --award-ink: var(--tone-human-ink); --award-border: var(--tone-human-border); }
+.awards[data-active-keyword="national"], .awards[data-active-keyword="paper-award"] { --award-active: var(--tone-award-solid); --award-soft: var(--tone-award-bg); --award-ink: var(--tone-award-ink); --award-border: var(--tone-award-border); }
 .award-card { --award-color: var(--tone-sensing-solid); position: relative; min-height: 310px; display: flex; flex-direction: column; padding: 25px; border: 1px solid var(--line); border-top: 4px solid var(--award-color); border-radius: 14px; background: linear-gradient(155deg, color-mix(in srgb, var(--award-color) 10%, var(--surface)), var(--surface) 58%); box-shadow: 0 9px 26px rgba(18, 43, 82, .07); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
 .award-card:hover { transform: translateY(-6px); border-color: var(--award-color); box-shadow: 0 18px 38px rgba(18, 43, 82, .13); }
 .award-card.featured { background: linear-gradient(155deg, color-mix(in srgb, var(--award-color) 12%, var(--surface)), var(--surface) 58%); }
@@ -333,12 +335,12 @@ svg { display: block; }
 .award-keyword-global { min-height: 36px; padding-inline: 12px 8px; font-size: .76rem; }
 .award-keyword-global span { min-width: 21px; height: 21px; display: grid; place-items: center; padding-inline: 5px; border-radius: 999px; background: rgba(29, 78, 216, .1); font-family: var(--font-mono); font-size: .62rem; }
 .award-keyword-global[aria-pressed="true"] span { background: rgba(255, 255, 255, .2); }
-:is([data-award-keyword="competition"], [data-award-keyword="artificial-intelligence"], [data-award-keyword="aws-deepracer"]) { --keyword-ink: var(--tone-sensing-ink); --keyword-bg: var(--tone-sensing-bg); --keyword-border: var(--tone-sensing-border); --keyword-solid: var(--tone-sensing-solid); }
-:is([data-award-keyword="big-data"], [data-award-keyword="internship"]) { --keyword-ink: var(--tone-medical-ink); --keyword-bg: var(--tone-medical-bg); --keyword-border: var(--tone-medical-border); --keyword-solid: var(--tone-medical-solid); }
-:is([data-award-keyword="idea-design"], [data-award-keyword="smart-device"]) { --keyword-ink: var(--tone-vision-ink); --keyword-bg: var(--tone-vision-bg); --keyword-border: var(--tone-vision-border); --keyword-solid: var(--tone-vision-solid); }
+[data-award-keyword="competition"], [data-award-keyword="artificial-intelligence"], [data-award-keyword="aws-deepracer"] { --keyword-ink: var(--tone-sensing-ink); --keyword-bg: var(--tone-sensing-bg); --keyword-border: var(--tone-sensing-border); --keyword-solid: var(--tone-sensing-solid); }
+[data-award-keyword="big-data"], [data-award-keyword="internship"], [data-award-keyword="medical-imaging"], [data-award-keyword="panoramic-x-ray"] { --keyword-ink: var(--tone-medical-ink); --keyword-bg: var(--tone-medical-bg); --keyword-border: var(--tone-medical-border); --keyword-solid: var(--tone-medical-solid); }
+[data-award-keyword="idea-design"], [data-award-keyword="smart-device"] { --keyword-ink: var(--tone-vision-ink); --keyword-bg: var(--tone-vision-bg); --keyword-border: var(--tone-vision-border); --keyword-solid: var(--tone-vision-solid); }
 [data-award-keyword="startup"] { --keyword-ink: var(--tone-method-ink); --keyword-bg: var(--tone-method-bg); --keyword-border: var(--tone-method-border); --keyword-solid: var(--tone-method-solid); }
-[data-award-keyword="mentoring"] { --keyword-ink: var(--tone-human-ink); --keyword-bg: var(--tone-human-bg); --keyword-border: var(--tone-human-border); --keyword-solid: var(--tone-human-solid); }
-[data-award-keyword="national"] { --keyword-ink: var(--tone-award-ink); --keyword-bg: var(--tone-award-bg); --keyword-border: var(--tone-award-border); --keyword-solid: var(--tone-award-solid); }
+[data-award-keyword="mentoring"], [data-award-keyword="in-korean"] { --keyword-ink: var(--tone-human-ink); --keyword-bg: var(--tone-human-bg); --keyword-border: var(--tone-human-border); --keyword-solid: var(--tone-human-solid); }
+[data-award-keyword="national"], [data-award-keyword="paper-award"] { --keyword-ink: var(--tone-award-ink); --keyword-bg: var(--tone-award-bg); --keyword-border: var(--tone-award-border); --keyword-solid: var(--tone-award-solid); }
 .award-reset { min-height: 36px; padding: 5px 12px; color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; background: transparent; font-family: var(--font-mono); font-size: .66rem; letter-spacing: .04em; cursor: pointer; transition: color .18s ease, border-color .18s ease, background-color .18s ease; }
 .award-reset:hover:not(:disabled) { color: var(--text); border-color: var(--accent); background: var(--accent-soft); }
 .award-reset:disabled { opacity: .48; cursor: default; }
@@ -367,7 +369,7 @@ svg { display: block; }
 .award-highlight .award-keyword:not([aria-pressed="true"]) { border-color: rgba(255, 255, 255, .62); }
 .award-certificate { width: max-content; margin-top: auto; padding-top: 30px; color: #fff; border-bottom: 1px solid rgba(255, 255, 255, .55); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; }
 .award-certificate:hover, .award-certificate:focus-visible { border-color: #fff; }
-.award-showcase :is(.award-keyword, .award-certificate):focus-visible { outline: 3px solid #fff; outline-offset: 3px; box-shadow: 0 0 0 6px rgba(5, 13, 28, .72); }
+.award-showcase .award-keyword:focus-visible, .award-showcase .award-certificate:focus-visible { outline: 3px solid #fff; outline-offset: 3px; box-shadow: 0 0 0 6px rgba(5, 13, 28, .72); }
 
 .award-record { margin-top: 52px; }
 .award-explorer + .award-record { margin-top: 0; }
@@ -384,6 +386,10 @@ svg { display: block; }
 .award-list-item.is-keyword-match { background: var(--accent-soft); box-shadow: inset 5px 0 var(--award-active); }
 .award-list-item.is-keyword-match::before { transform: scaleY(1); }
 .award-list-item.is-keyword-muted { background: var(--surface); }
+.award-list-item:target { scroll-margin-top: calc(var(--header-h) + 24px); }
+.awards:not([data-active-keyword]) .award-list-item:target { background: var(--tone-award-bg); box-shadow: inset 5px 0 var(--tone-award-solid), 0 0 0 2px var(--tone-award-border); }
+.awards:not([data-active-keyword]) .award-list-item:target::before { background: var(--tone-award-solid); transform: scaleY(1); }
+.awards[data-active-keyword] .award-list-item.is-keyword-match::before { background: var(--award-active); transform: scaleY(1); }
 .award-list time { grid-column: 1; grid-row: 1 / span 2; color: var(--accent); font-family: var(--font-mono); font-size: .75rem; font-weight: 500; letter-spacing: .08em; }
 .award-list-title { grid-column: 2; grid-row: 1; display: grid; gap: 2px; }
 .award-list-title strong { font-size: 1rem; font-weight: 650; }
