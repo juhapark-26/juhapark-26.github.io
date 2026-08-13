@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Juha Park — M.S. student at Jeonbuk National University researching remote photoplethysmography, physiological computing, and medical image analysis.">
-  <meta name="theme-color" content="#08111f" data-theme-color>
+  <meta name="theme-color" content="#f7f4ee" data-theme-color>
   <meta property="og:title" content="Juha Park | Physiological Computing Researcher">
   <meta property="og:description" content="Research in remote photoplethysmography, non-contact stress estimation, and medical image analysis.">
   <meta property="og:type" content="website">
@@ -19,21 +19,20 @@
       try {
         const root = document.documentElement;
         const savedTheme = localStorage.getItem('juha-theme');
-        const preferredTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-        root.dataset.theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : preferredTheme;
+        root.dataset.theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : 'light';
 
         const themeColor = document.querySelector('[data-theme-color]');
         const syncThemeColor = () => {
-          if (themeColor) themeColor.content = root.dataset.theme === 'light' ? '#eef5f6' : '#08111f';
+          if (themeColor) themeColor.content = root.dataset.theme === 'light' ? '#f7f4ee' : '#17201d';
         };
         syncThemeColor();
         new MutationObserver(syncThemeColor).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
       } catch {
-        document.documentElement.dataset.theme = 'dark';
+        document.documentElement.dataset.theme = 'light';
       }
     })();
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="assets/js/main.js" defer></script>
 </head>
@@ -71,73 +70,69 @@
 
   <main id="main">
     <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-orb hero-orb-a" aria-hidden="true"></div>
-      <div class="hero-orb hero-orb-b" aria-hidden="true"></div>
       <div class="container hero-layout">
         <div class="hero-copy" data-reveal>
-          <div class="eyebrow"><span class="status-dot"></span> Exploring signals hidden in everyday video</div>
-          <h1 id="hero-title">Turning pixels into<br><span class="gradient-text">physiological insight.</span></h1>
-          <p class="hero-lead">I’m <strong>Juha Park</strong>, an M.S. student at Jeonbuk National University. I build deep learning systems that recover subtle physiological signals from cameras—without physical contact.</p>
+          <p class="eyebrow">M.S. Student · Jeonbuk National University</p>
+          <h1 id="hero-title">Juha Park</h1>
+          <p class="hero-role">Physiological Computing &amp; Computer Vision Researcher</p>
+          <p class="hero-affiliation">Electronic &amp; Information Engineering · advised by Prof. Sang Jun Lee</p>
+
+          <div class="profile-links" aria-label="Professional profiles">
+            <a class="profile-link" href="mailto:juhapark@jbnu.ac.kr">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z"/><path d="m3 6 9 7 9-7"/></svg><span>Email</span>
+            </a>
+            <a class="profile-link" href="https://github.com/juhapark-26" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7.4A5.8 5.8 0 0 0 19.3 3 5.4 5.4 0 0 0 19.1 0S17.9-.4 15 1.5a14 14 0 0 0-6 0C6.1-.4 4.9 0 4.9 0a5.4 5.4 0 0 0-.2 3A5.8 5.8 0 0 0 3.2 7.1c0 5.8 3.5 7 6.8 7.4A4.8 4.8 0 0 0 9 18v4"/><path d="M9 19c-3 .9-3-1.5-4.2-2"/></svg><span>GitHub</span>
+            </a>
+            <a class="profile-link" href="https://www.linkedin.com/in/%EC%A3%BC%ED%95%98-%EB%B0%95-b427122b3/" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9v10M6 5.5v.01M10.5 19V9m0 4.5c1-5 7.5-5.3 7.5.8V19"/></svg><span>LinkedIn</span>
+            </a>
+            <a class="profile-link" href="https://scholar.google.com/citations?user=6KtKTRj5VfkC" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-6 9 6-9 6-9-6Z"/><path d="M7 13v4.5c2.7 2 7.3 2 10 0V13M3 10v6"/></svg><span>Google Scholar</span>
+            </a>
+          </div>
+
+          <div class="research-snapshot">
+            <span>Research snapshot</span>
+            <p>How reliably can ordinary cameras recover physiological signals outside controlled settings?</p>
+            <small>I work on robust remote PPG, non-contact stress estimation, egocentric vision, and medical image analysis.</small>
+          </div>
 
           <div class="research-tags" aria-label="Research interests">
             <span>Remote PPG</span>
-            <span>Physiological Computing</span>
+            <span>Stress Estimation</span>
+            <span>Egocentric Vision</span>
             <span>Medical Imaging</span>
-            <span>Deep Learning</span>
           </div>
 
           <div class="hero-actions">
-            <a class="button button-primary" href="#publications">Explore my research <span aria-hidden="true">↘</span></a>
-            <a class="button button-ghost" href="https://drive.google.com/file/d/1g49ymtteLu2JrlNCeSO-_akvwiHHPDmq/view?usp=sharing" target="_blank" rel="noreferrer">View CV <span aria-hidden="true">↗</span></a>
-          </div>
-
-          <div class="social-links" aria-label="Profile links">
-            <a href="mailto:juhapark@jbnu.ac.kr" aria-label="Email Juha Park" title="Email">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z"/><path d="m3 6 9 7 9-7"/></svg>
-            </a>
-            <a href="https://github.com/juhapark-26" target="_blank" rel="noreferrer" aria-label="GitHub profile" title="GitHub">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7.4A5.8 5.8 0 0 0 19.3 3 5.4 5.4 0 0 0 19.1 0S17.9-.4 15 1.5a14 14 0 0 0-6 0C6.1-.4 4.9 0 4.9 0a5.4 5.4 0 0 0-.2 3A5.8 5.8 0 0 0 3.2 7.1c0 5.8 3.5 7 6.8 7.4A4.8 4.8 0 0 0 9 18v4"/><path d="M9 19c-3 .9-3-1.5-4.2-2"/></svg>
-            </a>
-            <a href="https://scholar.google.com/citations?user=6KtKTRj5VfkC" target="_blank" rel="noreferrer" aria-label="Google Scholar profile" title="Google Scholar">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-6 9 6-9 6-9-6Z"/><path d="M7 13v4.5c2.7 2 7.3 2 10 0V13M3 10v6"/></svg>
-            </a>
+            <a class="button button-primary" href="#publications">View publications <span aria-hidden="true">↓</span></a>
+            <a class="button button-ghost" href="https://drive.google.com/file/d/1g49ymtteLu2JrlNCeSO-_akvwiHHPDmq/view?usp=sharing" target="_blank" rel="noopener noreferrer">View CV <span aria-hidden="true">↗</span></a>
           </div>
         </div>
 
         <div class="hero-visual" data-reveal>
-          <div class="portrait-frame">
+          <figure class="portrait-frame">
             <img src="assets/images/profile.jpg" alt="Juha Park outdoors by a riverside bridge" width="784" height="530" fetchpriority="high">
-            <span class="corner corner-tl"></span><span class="corner corner-tr"></span>
-            <span class="corner corner-bl"></span><span class="corner corner-br"></span>
-          </div>
-
-          <div class="signal-card" aria-hidden="true">
-            <div class="signal-meta"><span>LIVE SIGNAL</span><span>72 BPM</span></div>
-            <svg viewBox="0 0 360 96" preserveAspectRatio="none">
-              <defs><linearGradient id="wave" x1="0" x2="1"><stop stop-color="#35e7c3"/><stop offset="1" stop-color="#48a6ff"/></linearGradient></defs>
-              <path class="signal-grid-line" d="M0 24h360M0 48h360M0 72h360M90 0v96M180 0v96M270 0v96"/>
-              <path class="signal-wave" pathLength="1" d="M0 57 C18 55 25 58 37 56 S56 54 67 57 L77 57 84 49 90 68 98 20 106 78 115 54 C128 50 139 55 150 56 S173 58 183 54 L194 54 201 45 207 67 216 18 224 80 233 55 C245 52 256 58 269 56 S292 52 304 57 L315 57 322 48 328 66 337 24 344 75 352 54 360 55"/>
-            </svg>
-          </div>
-
-          <div class="floating-label label-camera" aria-hidden="true"><span>●</span> CAMERA-BASED</div>
-          <div class="floating-label label-contact" aria-hidden="true"><span>✓</span> NON-CONTACT</div>
+            <figcaption>
+              <span>Current focus</span>
+              <strong>Camera-based physiological sensing in real-world conditions</strong>
+            </figcaption>
+          </figure>
         </div>
       </div>
-      <a class="scroll-cue" href="#about"><span>Scroll to explore</span><span aria-hidden="true">↓</span></a>
     </section>
 
     <section class="section about" id="about" aria-labelledby="about-title">
       <div class="container about-grid">
         <div class="section-heading" data-reveal>
-          <p class="section-kicker">01 / ABOUT</p>
-          <h2 id="about-title">Signals tell a story.<br>I help machines <em>listen.</em></h2>
+          <p class="section-kicker">01 / RESEARCH</p>
+          <h2 id="about-title">Research focus</h2>
         </div>
         <div class="about-copy" data-reveal>
-          <p>I am an M.S. student in Electronic and Information Engineering at <strong>Jeonbuk National University</strong>, advised by Prof. Sang Jun Lee. My research connects computer vision, biosignal processing, and deep learning.</p>
-          <p>My current focus is robust non-contact stress estimation using remote photoplethysmography (rPPG). Previously, I worked on dental and maxillofacial analysis from panoramic X-ray images.</p>
-          <p>Long term, I aim to bring physiological sensing into egocentric-view and wearable-camera settings—making health-aware computing work naturally in the real world.</p>
+          <p>My research combines computer vision, biosignal processing, and deep learning to measure physiological signals without physical contact.</p>
+          <p>Current projects cover robust remote photoplethysmography (rPPG), stress estimation, and heart-rate estimation from egocentric NIR eye video. My earlier work includes maxillary-sinus segmentation in panoramic X-rays and knowledge distillation for semantic segmentation.</p>
+          <p>Long term, I am interested in physiological sensing with egocentric and wearable cameras.</p>
           <div class="interest-list" aria-label="Research focus areas">
             <div><span>01</span><strong>Remote Photoplethysmography</strong><small>Recovering pulse signals from subtle facial color variation.</small></div>
             <div><span>02</span><strong>Affective &amp; Physiological Computing</strong><small>Inferring stress and human state from non-contact signals.</small></div>
@@ -154,20 +149,20 @@
             <p class="section-kicker">02 / SELECTED WORK</p>
             <h2 id="publications-title">Publications</h2>
           </div>
-          <p>From physiological waveforms to medical images,<br>each project begins with a signal worth understanding.</p>
+          <p>Selected journal and conference work in physiological sensing, medical imaging, and computer vision.</p>
         </div>
 
         <div class="filter-bar" role="group" aria-label="Filter publications" data-reveal>
           <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All <span>8</span></button>
-          <button class="filter-button" type="button" data-filter="journal" aria-pressed="false">Journal <span>3</span></button>
-          <button class="filter-button" type="button" data-filter="manuscript" aria-pressed="false">Manuscript <span>1</span></button>
-          <button class="filter-button" type="button" data-filter="international" aria-pressed="false">International <span>2</span></button>
-          <button class="filter-button" type="button" data-filter="domestic" aria-pressed="false">Domestic <span>2</span></button>
+          <button class="filter-button" type="button" data-filter="physiological" aria-pressed="false">Physiological Sensing <span>3</span></button>
+          <button class="filter-button" type="button" data-filter="medical" aria-pressed="false">Medical Imaging <span>3</span></button>
+          <button class="filter-button" type="button" data-filter="segmentation" aria-pressed="false">Vision Segmentation <span>5</span></button>
+          <button class="filter-button" type="button" data-filter="distillation" aria-pressed="false">Knowledge Distillation <span>3</span></button>
         </div>
         <p class="sr-only" aria-live="polite" aria-atomic="true" data-filter-status>Showing all 8 works.</p>
 
         <div class="publication-list" data-publications>
-          <article class="publication-card" data-category="manuscript" data-reveal>
+          <article class="publication-card" data-topics="physiological" data-primary="physiological" data-reveal>
             <div class="publication-image"><img src="assets/images/pulsepath.png" alt="PulsePath two-stage generative waveform refinement architecture" loading="lazy" width="969" height="516"></div>
             <div class="publication-content">
               <div class="publication-meta"><span class="venue">Sensors</span><span>2026 · Under Review</span></div>
@@ -179,7 +174,7 @@
             </div>
           </article>
 
-          <article class="publication-card" data-category="international" data-reveal>
+          <article class="publication-card" data-topics="physiological" data-primary="physiological" data-reveal>
             <div class="publication-image"><img src="assets/images/beat.png" alt="BEAT architecture for heart rate estimation from egocentric NIR eye videos" loading="lazy" width="1176" height="617"></div>
             <div class="publication-content">
               <div class="publication-meta"><span class="venue">ECCV Workshop · Wearable AI</span><span>2026</span></div>
@@ -191,7 +186,7 @@
             </div>
           </article>
 
-          <article class="publication-card" data-category="international" data-reveal>
+          <article class="publication-card" data-topics="physiological" data-primary="physiological" data-reveal>
             <div class="publication-image"><img src="assets/images/prissm.png" alt="PRISSM architecture for non-contact stress estimation" loading="lazy" width="1254" height="591"></div>
             <div class="publication-content">
               <div class="publication-meta"><span class="venue">BMVC</span><span>2026</span></div>
@@ -203,7 +198,7 @@
             </div>
           </article>
 
-          <article class="publication-card" data-category="journal" data-reveal>
+          <article class="publication-card" data-topics="medical segmentation distillation" data-primary="medical" data-reveal>
             <div class="publication-image"><img src="assets/images/maxillary-kd.jpg" alt="Weighted knowledge distillation architecture for maxillary sinus segmentation" loading="lazy" width="1280" height="701"></div>
             <div class="publication-content">
               <div class="publication-meta"><span class="venue">Scientific Reports</span><span>2026</span></div>
@@ -215,7 +210,7 @@
             </div>
           </article>
 
-          <article class="publication-card" data-category="journal" data-reveal>
+          <article class="publication-card" data-topics="medical segmentation" data-primary="medical" data-reveal>
             <div class="publication-image"><img src="assets/images/unet-transformer.png" alt="Attention-based U-Net transformer for panoramic X-ray segmentation" loading="lazy" width="1280" height="701"></div>
             <div class="publication-content">
               <div class="publication-meta"><span class="venue">Journal of IEMEK</span><span>2025</span></div>
@@ -227,7 +222,7 @@
             </div>
           </article>
 
-          <article class="publication-card" data-category="journal" data-reveal>
+          <article class="publication-card" data-topics="segmentation distillation" data-primary="distillation" data-reveal>
             <div class="publication-image"><img src="assets/images/golf-kd.png" alt="Channel-attention knowledge distillation for golf-course segmentation" loading="lazy" width="1280" height="534"></div>
             <div class="publication-content">
               <div class="publication-meta"><span class="venue">Journal of Institute of Control, Robotics and Systems</span><span>2025</span></div>
@@ -239,7 +234,7 @@
             </div>
           </article>
 
-          <article class="publication-card compact-paper" data-category="domestic" data-reveal>
+          <article class="publication-card compact-paper" data-topics="medical segmentation" data-primary="medical" data-reveal>
             <div class="conference-index"><span>CONFERENCE</span><strong>01</strong></div>
             <div class="publication-content">
               <div class="publication-meta"><span class="venue">IEMEK Fall Conference</span><span>2024 · Oral</span></div>
@@ -251,7 +246,7 @@
             </div>
           </article>
 
-          <article class="publication-card compact-paper" data-category="domestic" data-reveal>
+          <article class="publication-card compact-paper" data-topics="segmentation distillation" data-primary="distillation" data-reveal>
             <div class="conference-index"><span>CONFERENCE</span><strong>02</strong></div>
             <div class="publication-content">
               <div class="publication-meta"><span class="venue">40th ICROS Annual Conference</span><span>2025 · Poster</span></div>
@@ -330,21 +325,23 @@
     </section>
 
     <section class="section contact" id="contact" aria-labelledby="contact-title">
-      <div class="contact-wave" aria-hidden="true">
-        <svg viewBox="0 0 1440 210" preserveAspectRatio="none"><path pathLength="1" d="M0 112 C35 110 48 113 70 111 L104 111 117 101 128 127 141 62 155 155 169 110 C200 107 219 113 245 111 S294 108 320 112 L354 112 367 102 378 126 392 60 406 153 420 110 C451 107 469 114 496 111 S545 108 572 112 L606 112 619 102 630 126 644 60 658 153 672 110 C703 107 721 114 748 111 S797 108 824 112 L858 112 871 102 882 126 896 60 910 153 924 110 C955 107 973 114 1000 111 S1049 108 1076 112 L1110 112 1123 102 1134 126 1148 60 1162 153 1176 110 C1207 107 1225 114 1252 111 S1301 108 1328 112 L1362 112 1375 102 1386 126 1400 60 1414 153 1440 110"/></svg>
-      </div>
       <div class="container contact-inner" data-reveal>
-        <p class="section-kicker">05 / GET IN TOUCH</p>
-        <h2 id="contact-title">Let’s uncover the next<br><span class="gradient-text">signal together.</span></h2>
-        <p>I’m always glad to discuss physiological computing, medical AI, or a research collaboration.</p>
-        <button class="email-button" type="button" data-copy-email data-email="juhapark@jbnu.ac.kr">
-          <span class="email-address">juhapark@jbnu.ac.kr</span>
-          <span class="copy-label">COPY EMAIL</span>
-        </button>
-        <div class="contact-links">
-          <a href="https://github.com/juhapark-26" target="_blank" rel="noreferrer">GitHub ↗</a>
-          <a href="https://scholar.google.com/citations?user=6KtKTRj5VfkC" target="_blank" rel="noreferrer">Google Scholar ↗</a>
-          <a href="https://drive.google.com/file/d/1g49ymtteLu2JrlNCeSO-_akvwiHHPDmq/view?usp=sharing" target="_blank" rel="noreferrer">Curriculum Vitae ↗</a>
+        <div class="contact-copy">
+          <p class="section-kicker">05 / OPEN TO OPPORTUNITIES</p>
+          <h2 id="contact-title">I’m currently looking for opportunities.</h2>
+          <p>I work on camera-based physiological sensing, computer vision, and medical AI. I’m exploring research and AI engineering opportunities, and I’m also happy to discuss collaborations.</p>
+        </div>
+        <div class="contact-actions">
+          <button class="email-button" type="button" data-copy-email data-email="juhapark@jbnu.ac.kr">
+            <span class="email-address">juhapark@jbnu.ac.kr</span>
+            <span class="copy-label">COPY</span>
+          </button>
+          <div class="contact-links">
+            <a href="https://www.linkedin.com/in/%EC%A3%BC%ED%95%98-%EB%B0%95-b427122b3/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a href="https://github.com/juhapark-26" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a href="https://scholar.google.com/citations?user=6KtKTRj5VfkC" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
+            <a href="https://drive.google.com/file/d/1g49ymtteLu2JrlNCeSO-_akvwiHHPDmq/view?usp=sharing" target="_blank" rel="noopener noreferrer">CV ↗</a>
+          </div>
         </div>
       </div>
     </section>
@@ -353,7 +350,7 @@
   <footer class="site-footer">
     <div class="container">
       <p>© <span data-year></span> Juha Park</p>
-      <p>Designed around research, signals, and curiosity.</p>
+      <p>M.S. Student · Jeonbuk National University</p>
       <a href="#home">Back to top ↑</a>
     </div>
   </footer>

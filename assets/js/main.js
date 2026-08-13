@@ -18,8 +18,7 @@
     savedTheme = null;
   }
 
-  const preferredTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-  const initialTheme = savedTheme || preferredTheme;
+  const initialTheme = savedTheme || 'light';
   root.dataset.theme = initialTheme;
 
   const syncThemeUi = () => {
@@ -90,18 +89,18 @@
 
   const filters = [...document.querySelectorAll('[data-filter]')];
   const publicationList = document.querySelector('[data-publications]');
-  const cards = [...(publicationList?.querySelectorAll('[data-category]') ?? [])];
+  const cards = [...(publicationList?.querySelectorAll('[data-topics]') ?? [])];
   const filterStatus = document.querySelector('[data-filter-status]');
   const filterLabels = {
-    journal: 'journal',
-    manuscript: 'manuscript',
-    international: 'international conference',
-    domestic: 'domestic conference'
+    physiological: 'physiological sensing',
+    medical: 'medical imaging',
+    segmentation: 'vision segmentation',
+    distillation: 'knowledge distillation'
   };
 
   const cardMatchesFilter = (card, category) => {
     if (category === 'all') return true;
-    return (card.dataset.category || '').split(/\s+/).includes(category);
+    return (card.dataset.topics || '').split(/\s+/).includes(category);
   };
 
   const getFilterLabel = (button) => {
