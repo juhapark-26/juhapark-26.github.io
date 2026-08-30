@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="BEAT adds location-wise depthwise temporal adaptation and pulse-phase supervision for heart-rate estimation from egocentric NIR eye videos.">
+  <meta name="theme-color" content="#f4f7fc" data-theme-color>
+  <meta property="og:title" content="BEAT | Egocentric NIR Heart-Rate Estimation">
+  <meta property="og:description" content="Bottleneck-enhanced adaptive temporal learning for pulse estimation from egocentric NIR eye videos.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://juhapark-26.github.io/projects/beat/">
+  <meta property="og:image" content="https://juhapark-26.github.io/assets/images/beat.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://juhapark-26.github.io/projects/beat/">
+  <title>BEAT | Egocentric NIR Heart-Rate Estimation</title>
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>
+    (() => {
+      try {
+        const root = document.documentElement;
+        const savedTheme = localStorage.getItem('juha-theme');
+        root.dataset.theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : 'light';
+
+        const themeColor = document.querySelector('[data-theme-color]');
+        const syncThemeColor = () => {
+          if (themeColor) themeColor.content = root.dataset.theme === 'light' ? '#f4f7fc' : '#081426';
+        };
+        syncThemeColor();
+        new MutationObserver(syncThemeColor).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+      } catch {
+        document.documentElement.dataset.theme = 'light';
+      }
+    })();
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/project.css">
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body class="project-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="container nav-wrap">
+      <a class="brand" href="/" aria-label="Juha Park — academic homepage">
+        <svg class="brand-mark" viewBox="0 0 44 24" aria-hidden="true">
+          <path d="M1 12h5l2-8 5 16 5-12 4 8 4-4h5l2-7 4 14 3-7h3"/>
+        </svg>
+        <span>BEAT</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span class="sr-only">Open navigation</span>
+        <span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Project navigation" data-nav>
+        <a href="#overview">Overview</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#efficiency">Efficiency</a>
+        <a href="#resources">Resources</a>
+      </nav>
+
+      <button class="theme-toggle" type="button" aria-label="Switch to light theme" data-theme-toggle>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.2A8.4 8.4 0 0 1 8.8 4 8.5 8.5 0 1 0 20 15.2Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="project-hero" id="overview" aria-labelledby="project-title">
+      <div class="container">
+        <div class="project-hero-copy" data-reveal>
+          <div class="project-labels">
+            <span>ECCV 2026 Workshop</span>
+            <span>Wearable AI</span>
+          </div>
+          <p class="project-kicker">Egocentric physiological sensing</p>
+          <h1 id="project-title"><span>BEAT</span>: Bottleneck-Enhanced Adaptive Temporal Learning</h1>
+          <p class="project-deck">Heart-rate estimation from egocentric near-infrared eye videos through location-wise temporal refinement and pulse-phase supervision.</p>
+          <p class="project-authors"><strong>Juha Park</strong><span aria-hidden="true">·</span>Sang Jun Lee<sup>*</sup></p>
+          <p class="corresponding-note"><sup>*</sup> Corresponding author</p>
+
+          <div class="project-actions" aria-label="Project resources">
+            <a class="button button-primary" href="#method">Explore the method <span aria-hidden="true">↓</span></a>
+            <span class="button button-muted" aria-disabled="true">Paper · coming soon</span>
+            <span class="button button-muted" aria-disabled="true">Code · coming soon</span>
+          </div>
+
+          <dl class="hero-facts" aria-label="BEAT at a glance">
+            <div><dt>18,560</dt><dd>added parameters</dd></div>
+            <div><dt>31 frames</dt><dd>adapter receptive field</dd></div>
+            <div><dt>24</dt><dd>spatial trajectories retained</dd></div>
+          </dl>
+        </div>
+
+        <figure class="architecture-figure" data-reveal>
+          <div class="figure-frame">
+            <img src="/assets/images/beat.png" alt="BEAT architecture showing the video and IMU backbone, bottleneck temporal adapter, decoder, and pulse-phase loss" width="1176" height="617" fetchpriority="high">
+          </div>
+          <figcaption>
+            <span>Architecture overview</span>
+            BEAT retains the video/IMU backbone and decoder, inserting its temporal adapter at the compact bottleneck before global spatial pooling.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="project-section problem-section" aria-labelledby="problem-title">
+      <div class="container project-two-column">
+        <div class="project-heading" data-reveal>
+          <p class="section-kicker">01 / MOTIVATION</p>
+          <h2 id="problem-title">Why adapt before pooling?</h2>
+        </div>
+        <div class="problem-copy" data-reveal>
+          <p class="lead-copy">Egocentric NIR eye videos contain weak physiological variation mixed with spatially uneven disturbances from eyelids, gaze, and headset motion.</p>
+          <p>Global spatial pooling compresses every eye-region location into one temporal descriptor. If temporal refinement happens only afterward, local trajectories that carry different levels of pulse information and corruption have already been mixed.</p>
+          <p>BEAT therefore applies one shared lightweight temporal operator to each bottleneck location first. The design preserves location identity during refinement while sharing weights across locations, keeping the parameter overhead small.</p>
+          <div class="design-principle">
+            <span>Design principle</span>
+            <strong>Refine local temporal trajectories, then aggregate them.</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section method-section" id="method" aria-labelledby="method-title">
+      <div class="container">
+        <div class="project-heading heading-centered" data-reveal>
+          <p class="section-kicker">02 / METHOD</p>
+          <h2 id="method-title">Two focused additions to a retained backbone</h2>
+          <p>The Transformer-based backbone and waveform decoder remain in place. BEAT changes the bottleneck representation and its training objective.</p>
+        </div>
+
+        <ol class="method-flow" aria-label="BEAT processing pipeline" data-reveal>
+          <li><span>01</span><strong>NIR eye video + IMU</strong><small>Existing multimodal conditioning</small></li>
+          <li><span>02</span><strong>Retained backbone</strong><small>Compact spatiotemporal features</small></li>
+          <li class="flow-emphasis"><span>03</span><strong>BEAT adapter</strong><small>Location-wise DW-TCN</small></li>
+          <li><span>04</span><strong>Retained decoder</strong><small>Differential pulse waveform</small></li>
+          <li class="flow-emphasis"><span>05</span><strong>MPPL</strong><small>Multi-lag phase progression</small></li>
+        </ol>
+
+        <div class="method-grid">
+          <article class="method-card method-card-wide" data-reveal>
+            <div class="method-index">A</div>
+            <p class="method-label">Pre-pooling temporal adapter</p>
+            <h3>Location-wise bottleneck refinement</h3>
+            <p>The bottleneck tensor has shape <code>B × 64 × 32 × 3 × 8</code>. BEAT reshapes its 24 spatial positions into independent length-32 temporal trajectories, applies the same adapter to each trajectory, then restores the spatial grid for downstream pooling and decoding.</p>
+            <div class="tensor-flow" aria-label="Adapter tensor transformation">
+              <code>B × 64 × 32 × 3 × 8</code>
+              <span aria-hidden="true">→</span>
+              <code>(B × 24) × 64 × 32</code>
+              <span aria-hidden="true">→</span>
+              <code>B × 64 × 32 × 3 × 8</code>
+            </div>
+          </article>
+
+          <article class="method-card" data-reveal>
+            <div class="method-index">B</div>
+            <p class="method-label">Depthwise temporal stack</p>
+            <h3>Multi-scale temporal context</h3>
+            <p>Four non-causal depthwise Conv1D layers use kernel size 3 and dilations <code>[1, 2, 4, 8]</code>, yielding a 31-frame receptive field at the bottleneck resolution.</p>
+            <ul class="compact-list">
+              <li>GroupNorm + SiLU</li>
+              <li>Pointwise GLU gating</li>
+              <li>Layer-scaled residual output</li>
+            </ul>
+          </article>
+
+          <article class="method-card" data-reveal>
+            <div class="method-index">C</div>
+            <p class="method-label">MPPL objective</p>
+            <h3>Pulse-phase progression</h3>
+            <p>Multi-Lag Pulse-Phase Progression Loss reconstructs a band-limited pulse, obtains analytic phase increments, and aligns prediction and target at lags <code>{1, 2, 4}</code>. Target-envelope confidence reduces the influence of ambiguous low-amplitude intervals.</p>
+            <div class="loss-equation" aria-label="Total training objective">
+              <span>L</span><sub>total</sub>
+              <span>= L</span><sub>wave</sub>
+              <span>+ 0.1 L</span><sub>spec</sub>
+              <span>+ λ(t) L</span><sub>MPPL</sub>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section results-section" id="results" aria-labelledby="results-title">
+      <div class="container">
+        <div class="project-heading heading-row-project" data-reveal>
+          <div>
+            <p class="section-kicker">03 / RESULTS</p>
+            <h2 id="results-title">Evaluation snapshot</h2>
+          </div>
+          <p>Reported egoPPG-DB performance under participant-disjoint evaluation. Lower is better for error metrics; higher is better for correlation.</p>
+        </div>
+
+        <dl class="metric-grid" data-reveal>
+          <div><dt>MAE ↓</dt><dd>7.20</dd><small>bpm</small></div>
+          <div><dt>RMSE ↓</dt><dd>9.68</dd><small>bpm</small></div>
+          <div><dt>MAPE ↓</dt><dd>8.65</dd><small>%</small></div>
+          <div><dt>Pearson r ↑</dt><dd>0.88</dd><small>correlation</small></div>
+        </dl>
+
+        <div class="table-card" data-reveal>
+          <div class="table-card-header">
+            <div>
+              <p>Component study</p>
+              <h3>Adapter × MPPL</h3>
+            </div>
+            <span>Matched training and evaluation pipeline</span>
+          </div>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Component study table">
+            <table>
+              <thead>
+                <tr><th scope="col">Configuration</th><th scope="col">Adapter</th><th scope="col">MPPL</th><th scope="col">MAE ↓</th><th scope="col">RMSE ↓</th><th scope="col">MAPE ↓</th><th scope="col">r ↑</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Backbone control</th><td>—</td><td>—</td><td>8.83</td><td>12.63</td><td>11.65</td><td>0.83</td></tr>
+                <tr><th scope="row">Adapter only</th><td>✓</td><td>—</td><td>7.84</td><td>10.62</td><td>9.41</td><td>0.87</td></tr>
+                <tr><th scope="row">MPPL only</th><td>—</td><td>✓</td><td>7.82</td><td>11.07</td><td>9.96</td><td>0.86</td></tr>
+                <tr class="best-row"><th scope="row">BEAT</th><td>✓</td><td>✓</td><td><strong>7.20</strong></td><td><strong>9.68</strong></td><td><strong>8.65</strong></td><td><strong>0.88</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">“Backbone control” denotes the retained architecture trained in the same local pipeline; it is not presented as an official reproduction of a separately reported paper result.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section efficiency-section" id="efficiency" aria-labelledby="efficiency-title">
+      <div class="container project-two-column efficiency-layout">
+        <div class="project-heading" data-reveal>
+          <p class="section-kicker">04 / EFFICIENCY</p>
+          <h2 id="efficiency-title">Small parameter overhead</h2>
+          <p>Location-wise processing shares one adapter across all spatial trajectories. It preserves local structure without creating a separate temporal module per location.</p>
+        </div>
+
+        <div class="table-card efficiency-card" data-reveal>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Efficiency comparison table">
+            <table>
+              <thead>
+                <tr><th scope="col">Model</th><th scope="col">Params</th><th scope="col">MACs</th><th scope="col">Latency</th><th scope="col">Eq. kFPS</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">PulseFormer</th><td>12.077 M</td><td>49.687 G</td><td>4.01 ms</td><td>31.94</td></tr>
+                <tr class="best-row"><th scope="row">BEAT</th><td>12.096 M</td><td>49.700 G</td><td>4.61 ms</td><td>27.77</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="protocol-note">
+            <strong>Benchmark protocol</strong>
+            <p>NVIDIA B200, FP32, batch size 1, GPU-resident 128-frame input, 100 warm-up iterations, and the median of 1,400 CUDA-event forward timings.</p>
+            <p><em>Eq. kFPS</em> is latency-normalized input-frame throughput (<code>128 / latency</code>), not end-to-end camera streaming throughput.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section interpretation-section" aria-labelledby="interpretation-title">
+      <div class="container">
+        <div class="project-heading heading-centered" data-reveal>
+          <p class="section-kicker">05 / INTERPRETATION</p>
+          <h2 id="interpretation-title">What the evidence supports</h2>
+        </div>
+        <div class="scope-grid">
+          <article data-reveal><span>Supported</span><h3>Location-preserving refinement</h3><p>The component study supports the value of temporal adaptation before spatial pooling under the retained evaluation setting.</p></article>
+          <article data-reveal><span>Supported</span><h3>Complementary supervision</h3><p>Adapter and MPPL together improve the aggregate HR metrics over either component alone in the reported snapshot.</p></article>
+          <article data-reveal><span>Scope</span><h3>Careful generalization</h3><p>Current evidence is limited to egoPPG-DB. The non-causal adapter is not a strictly streaming implementation, and MPPL should not be interpreted as direct proof of high-motion robustness or beat-timing accuracy without dedicated evaluation.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section resources-section" id="resources" aria-labelledby="resources-title">
+      <div class="container resources-grid">
+        <div class="project-heading" data-reveal>
+          <p class="section-kicker">06 / RESOURCES</p>
+          <h2 id="resources-title">Release plan</h2>
+          <p>The project page is public first. A curated code release will follow after dependency licensing, paths, configurations, and documentation are audited.</p>
+        </div>
+        <div class="release-list" data-reveal>
+          <div><span>Project page</span><strong>Available</strong></div>
+          <div><span>Paper</span><strong>Coming soon</strong></div>
+          <div><span>Training code</span><strong>Coming soon</strong></div>
+          <div><span>Pretrained weights</span><strong>Not included</strong></div>
+          <div><span>Raw data &amp; checkpoints</span><strong>Not included</strong></div>
+        </div>
+        <div class="citation-card" data-reveal>
+          <div class="citation-heading">
+            <span>Citation</span>
+            <small>BibTeX</small>
+          </div>
+          <pre><code>@inproceedings{park2026beat,
+  title     = {BEAT: Bottleneck-Enhanced Adaptive Temporal Learning
+               for Heart Rate Estimation from Egocentric NIR Eye Videos},
+  author    = {Park, Juha and Lee, Sang Jun},
+  booktitle = {ECCV Workshop on Wearable AI},
+  year      = {2026}
+}</code></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span data-year></span> Juha Park</p>
+      <p>BEAT · Egocentric NIR physiological sensing</p>
+      <a href="/">Academic homepage ↗</a>
+    </div>
+  </footer>
+</body>
+</html>
