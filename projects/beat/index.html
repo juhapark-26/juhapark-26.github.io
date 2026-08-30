@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="BEAT: bottleneck-enhanced adaptive temporal learning for heart-rate estimation from egocentric NIR eye videos.">
+  <meta name="keywords" content="BEAT, rPPG, egoPPG, NIR eye video, heart rate, physiological sensing, DW-TCN, MPPL">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="BEAT | Egocentric NIR Heart-Rate Estimation">
+  <meta property="og:description" content="Location-preserving temporal refinement and pulse-phase supervision for egocentric NIR physiological sensing.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://juhapark-26.github.io/projects/beat/">
+  <meta property="og:image" content="https://juhapark-26.github.io/assets/images/beat.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://juhapark-26.github.io/projects/beat/">
+  <title>BEAT: Bottleneck-Enhanced Adaptive Temporal Learning</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/assets/css/project.css">
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+</head>
+<body class="beat-project">
+  <nav class="navbar is-transparent" aria-label="Project navigation">
+    <div class="container is-max-desktop">
+      <div class="navbar-brand">
+        <a class="navbar-item beat-home-link" href="/" aria-label="Back to Juha Park's academic homepage">
+          <span aria-hidden="true">←</span>
+          <span>Juha Park</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero publication-header">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <p class="publication-venue">ECCV 2026 Workshop on Wearable AI</p>
+              <h1 class="title is-1 publication-title">
+                <span class="beat-wordmark">BEAT</span>: Bottleneck-Enhanced Adaptive Temporal Learning for Heart Rate Estimation from Egocentric NIR Eye Videos
+              </h1>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"><a href="/">Juha Park</a><sup>1</sup></span>
+                <span class="author-block">Sang Jun Lee<sup>1,*</sup></span>
+              </div>
+              <div class="is-size-6 publication-authors publication-affiliation">
+                <span class="author-block"><sup>1</sup>Jeonbuk National University</span>
+                <span class="author-block"><sup>*</sup>Corresponding author</span>
+              </div>
+
+              <div class="column has-text-centered publication-links" aria-label="Project resources">
+                <span class="link-block">
+                  <span class="external-link button is-normal is-rounded is-dark is-static" aria-disabled="true">
+                    <span class="icon" aria-hidden="true">▤</span><span>Paper · Coming Soon</span>
+                  </span>
+                </span>
+                <span class="link-block">
+                  <span class="external-link button is-normal is-rounded is-dark is-static" aria-disabled="true">
+                    <span class="icon" aria-hidden="true">⌘</span><span>Code · Coming Soon</span>
+                  </span>
+                </span>
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark" href="#results">
+                    <span class="icon" aria-hidden="true">↓</span><span>Results</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <figure class="main-figure">
+            <img src="/assets/images/beat.png" alt="BEAT architecture: IMU-conditioned NIR video encoder, location-wise bottleneck DW-TCN adapter, temporal decoder, and MPPL supervision" width="1176" height="617">
+            <figcaption>
+              <strong>Figure 1. BEAT architecture.</strong> The PulseFormer-derived video/IMU backbone and temporal decoder are retained. BEAT inserts a shared location-wise DW-TCN at the spatially structured bottleneck before global pooling and adds Multi-Lag Pulse-Phase Progression Loss (MPPL).
+            </figcaption>
+          </figure>
+          <h2 class="subtitle has-text-centered teaser-caption">
+            Refine each bottleneck location's temporal trajectory <em>before</em> spatial aggregation.
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified abstract-copy">
+              <p>Egocentric near-infrared eye videos expose only a small periocular region, where subtle pulse-related variation is mixed with spatially uneven disturbance from eyelids, gaze changes, occlusion, and headset motion. Global spatial pooling can merge stable and corrupted trajectories before their distinct temporal behavior is modeled.</p>
+              <p>BEAT preserves location identity at the encoder bottleneck. A lightweight residual depthwise temporal adapter independently refines all 24 spatial trajectories with shared parameters before global pooling. MPPL complements waveform and spectral supervision by aligning local analytic-phase progression at multiple temporal lags. The retained evaluation snapshot reports 7.20 BPM MAE, 9.68 BPM RMSE, 8.65% MAPE, and a Pearson correlation of 0.88 on egoPPG-DB.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section method-section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Method</h2>
+        <div class="columns is-centered is-variable is-5 method-columns">
+          <div class="column">
+            <article class="method-panel">
+              <p class="method-eyebrow">01 · WHERE</p>
+              <h3 class="title is-4">Pre-pooling temporal adaptation</h3>
+              <p>BEAT receives the bottleneck tensor <code>B × 64 × 32 × 3 × 8</code>, preserves its 24 spatial positions, and applies the same temporal operator independently to every length-32 trajectory.</p>
+              <div class="tensor-line"><code>B × 64 × 32 × 3 × 8</code><span>→</span><code>(B × 24) × 64 × 32</code></div>
+            </article>
+          </div>
+          <div class="column">
+            <article class="method-panel">
+              <p class="method-eyebrow">02 · HOW</p>
+              <h3 class="title is-4">Residual depthwise TCN</h3>
+              <p>Four non-causal depthwise Conv1D stages use kernel 3 and dilations <code>[1, 2, 4, 8]</code>, giving a 31-token receptive field. GroupNorm, SiLU, pointwise GLU, layer scaling, and residual output projection stabilize refinement.</p>
+            </article>
+          </div>
+          <div class="column">
+            <article class="method-panel">
+              <p class="method-eyebrow">03 · OBJECTIVE</p>
+              <h3 class="title is-4">Multi-lag pulse phase</h3>
+              <p>MPPL reconstructs a band-limited pulse and aligns analytic-phase increments at lags <code>{1, 2, 4}</code>, weighted by the target envelope to reduce supervision from ambiguous low-amplitude intervals.</p>
+            </article>
+          </div>
+        </div>
+        <div class="loss-box has-text-centered" aria-label="BEAT training objective">
+          <span>L<sub>total</sub></span>
+          <span>= L<sub>wave</sub></span>
+          <span>+ 0.1 L<sub>spec</sub></span>
+          <span>+ λ(t)L<sub>MPPL</sub></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section results-section" id="results">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Main Results</h2>
+        <p class="subtitle is-6 has-text-centered table-intro">Heart-rate estimation on egoPPG-DB. Lower MAE, RMSE, and MAPE and higher Pearson <em>r</em> are better.</p>
+
+        <div class="table-container beat-table-wrap" tabindex="0" role="region" aria-label="Main egoPPG-DB comparison">
+          <table class="table is-fullwidth is-hoverable beat-table">
+            <caption>Table 1. Comparison with existing rPPG methods on egoPPG-DB.</caption>
+            <thead><tr><th>Model</th><th class="has-text-right">MAE ↓</th><th class="has-text-right">RMSE ↓</th><th class="has-text-right">MAPE (%) ↓</th><th class="has-text-right"><em>r</em> ↑</th></tr></thead>
+            <tbody>
+              <tr><td>Yue et al.</td><td>29.63</td><td>32.99</td><td>37.86</td><td>0.10</td></tr>
+              <tr><td>DeepPhys</td><td>28.26</td><td>31.97</td><td>36.68</td><td>0.08</td></tr>
+              <tr><td>TS-CAN</td><td>26.32</td><td>32.39</td><td>29.13</td><td>0.11</td></tr>
+              <tr><td>ContrastPhys+</td><td>19.12</td><td>24.13</td><td>22.57</td><td>0.21</td></tr>
+              <tr><td>RhythmMamba</td><td>15.05</td><td>19.78</td><td>17.46</td><td>−0.16</td></tr>
+              <tr><td>Signal processing (eyes)</td><td>14.60</td><td>18.18</td><td>18.37</td><td>0.20</td></tr>
+              <tr><td>PhysMamba</td><td>13.94</td><td>16.86</td><td>17.76</td><td>0.61</td></tr>
+              <tr><td>RhythmFormer</td><td>13.13</td><td>17.43</td><td>14.73</td><td>0.51</td></tr>
+              <tr><td>Signal processing (skin)</td><td>12.40</td><td>15.54</td><td>15.29</td><td>0.50</td></tr>
+              <tr><td>PhysNet</td><td>12.09</td><td>15.43</td><td>15.14</td><td>0.66</td></tr>
+              <tr><td>PhysFormer</td><td>10.71</td><td>13.97</td><td>12.69</td><td>0.72</td></tr>
+              <tr><td>FactorizePhys</td><td>10.07</td><td>13.43</td><td>12.36</td><td>0.67</td></tr>
+              <tr class="reference-row"><td>PulseFormer</td><td>7.67</td><td>10.69</td><td>9.45</td><td>0.85</td></tr>
+              <tr class="ours-row"><td><strong>BEAT (ours)</strong></td><td><strong>7.20</strong></td><td><strong>9.68</strong></td><td><strong>8.65</strong></td><td><strong>0.88</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notification evidence-note">
+          <strong>Evaluation provenance.</strong> Existing-method values are transcribed from the egoPPG study and are shown as reported references; they were not rerun in the BEAT codebase. The BEAT row is the retained local evaluation snapshot, not a repeated-run aggregate. The controlled component table below is the appropriate comparison for isolating the proposed contributions.
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Component Ablation</h2>
+        <p class="subtitle is-6 has-text-centered table-intro">The adapter and MPPL are toggled within the same training and evaluation pipeline.</p>
+        <div class="table-container beat-table-wrap compact-table" tabindex="0" role="region" aria-label="Adapter and MPPL ablation">
+          <table class="table is-fullwidth is-hoverable beat-table">
+            <caption>Table 2. Individual and combined effects of the proposed components.</caption>
+            <thead><tr><th>Configuration</th><th class="has-text-centered">Adapter</th><th class="has-text-centered">MPPL</th><th class="has-text-right">MAE ↓</th><th class="has-text-right">RMSE ↓</th><th class="has-text-right">MAPE (%) ↓</th><th class="has-text-right"><em>r</em> ↑</th></tr></thead>
+            <tbody>
+              <tr><td>Backbone control</td><td>—</td><td>—</td><td>8.83</td><td>12.63</td><td>11.65</td><td>0.83</td></tr>
+              <tr><td>Adapter component</td><td>✓</td><td>—</td><td>7.84</td><td>10.62</td><td>9.41</td><td>0.87</td></tr>
+              <tr><td>MPPL component</td><td>—</td><td>✓</td><td>7.82</td><td>11.07</td><td>9.96</td><td>0.86</td></tr>
+              <tr class="ours-row"><td><strong>Full BEAT</strong></td><td>✓</td><td>✓</td><td><strong>7.20</strong></td><td><strong>9.68</strong></td><td><strong>8.65</strong></td><td><strong>0.88</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="has-text-centered control-note">“Backbone control” is the retained architecture trained with the common waveform-plus-spectral objective; it is not an official reproduction of the published PulseFormer result.</p>
+      </div>
+    </section>
+
+    <section class="section efficiency-section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Efficiency</h2>
+        <div class="table-container beat-table-wrap compact-table" tabindex="0" role="region" aria-label="Efficiency comparison">
+          <table class="table is-fullwidth is-hoverable beat-table">
+            <caption>Table 3. Forward-inference efficiency on an NVIDIA B200.</caption>
+            <thead><tr><th>Model</th><th class="has-text-right">Parameters (M)</th><th class="has-text-right">MAC-equiv. (G)</th><th class="has-text-right">Latency (ms/clip) ↓</th><th class="has-text-right">Eq. kFPS ↑</th></tr></thead>
+            <tbody>
+              <tr class="reference-row"><td>PulseFormer architecture</td><td>12.077</td><td>49.687</td><td>4.01</td><td>31.94</td></tr>
+              <tr class="ours-row"><td><strong>BEAT</strong></td><td><strong>12.096</strong></td><td><strong>49.700</strong></td><td><strong>4.61</strong></td><td><strong>27.77</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="protocol-copy">FP32 eager forward inference, batch size 1, GPU-resident <code>1 × 1 × 128 × 48 × 128</code> input, 100 warm-up iterations, and the median of 1,400 CUDA-event timings. Equivalent kFPS is <code>128 / latency</code>; it is input-frame-equivalent throughput, not end-to-end camera-stream throughput.</p>
+      </div>
+    </section>
+
+    <section class="section limitations-section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3 has-text-centered">Scope</h2>
+            <div class="content">
+              <p>Current evidence is limited to egoPPG-DB. The adapter is non-causal and is therefore not a strictly streaming implementation. MPPL supervises local phase progression, but direct beat-timing, short-window HR, and motion-stratified validation should be reported separately before making those empirical claims.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="citation">
+      <div class="container is-max-desktop content">
+        <h2 class="title is-3 has-text-centered">BibTeX</h2>
+        <pre class="citation-block"><code>@inproceedings{park2026beat,
+  title     = {BEAT: Bottleneck-Enhanced Adaptive Temporal Learning
+               for Heart Rate Estimation from Egocentric NIR Eye Videos},
+  author    = {Park, Juha and Lee, Sang Jun},
+  booktitle = {ECCV Workshop on Wearable AI},
+  year      = {2026}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content has-text-centered footer-copy">
+            <p><a href="/">Juha Park</a> · BEAT project page</p>
+            <p>Page structure adapted and modified from the <a href="https://nerfies.github.io/" target="_blank" rel="noopener noreferrer">Nerfies project page</a> and its <a href="https://github.com/nerfies/nerfies.github.io" target="_blank" rel="noopener noreferrer">source</a>, licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-SA 4.0</a>. No Nerfies media or analytics code is included.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
