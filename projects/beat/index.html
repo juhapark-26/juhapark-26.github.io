@@ -165,14 +165,33 @@
               <tr><td>PhysNet</td><td>12.09</td><td>15.43</td><td>15.14</td><td>0.66</td></tr>
               <tr><td>PhysFormer</td><td>10.71</td><td>13.97</td><td>12.69</td><td>0.72</td></tr>
               <tr><td>FactorizePhys</td><td>10.07</td><td>13.43</td><td>12.36</td><td>0.67</td></tr>
-              <tr class="reference-row"><td>PulseFormer</td><td>7.67</td><td>10.69</td><td>9.45</td><td>0.85</td></tr>
+              <tr class="reference-row"><td>PulseFormer (published)</td><td>7.67</td><td>10.69</td><td>9.45</td><td>0.85</td></tr>
+              <tr class="reference-row"><td>PulseFormer (our reproduction)</td><td>9.12</td><td>12.15</td><td>11.19</td><td>0.79</td></tr>
               <tr class="ours-row"><td><strong>BEAT (ours)</strong></td><td><strong>7.20</strong></td><td><strong>9.68</strong></td><td><strong>8.65</strong></td><td><strong>0.88</strong></td></tr>
             </tbody>
           </table>
         </div>
         <div class="notification evidence-note">
-          <strong>Evaluation provenance.</strong> Existing-method values are transcribed from the egoPPG study and are shown as reported references; they were not rerun in the BEAT codebase. The BEAT row is the retained local evaluation snapshot, not a repeated-run aggregate. The controlled component table below is the appropriate comparison for isolating the proposed contributions.
+          <strong>Evaluation provenance.</strong> Values are transcribed from <a href="/assets/docs/beat-paper.pdf#page=10">Table 1 of the paper</a>. “PulseFormer (published)” and the other literature baselines are reported egoPPG references; “PulseFormer (our reproduction)” is the separate reproduction reported in our paper. The displayed BEAT values also match the retained local evaluation snapshot; this page update does not establish a new repeated-run aggregate. The controlled component table below isolates the adapter and MPPL under the common waveform–spectral objective.
         </div>
+      </div>
+    </section>
+
+    <section class="section efficiency-section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Efficiency</h2>
+        <div class="table-container beat-table-wrap compact-table" tabindex="0" role="region" aria-label="Efficiency comparison as reported in the paper">
+          <table class="table is-fullwidth is-hoverable beat-table">
+            <caption>Table 2. Computational comparison on an NVIDIA B200, as reported in the paper.</caption>
+            <thead><tr><th>Model</th><th class="has-text-right">T</th><th class="has-text-right">Params (M)</th><th class="has-text-right">MACs (G)</th><th class="has-text-right">Latency (ms) ↓</th><th class="has-text-right">kFPS ↑</th></tr></thead>
+            <tbody>
+              <tr class="reference-row"><td>PulseFormer</td><td>128</td><td>12.08</td><td>49.69</td><td>4.01</td><td>31.94</td></tr>
+              <tr class="ours-row"><td><strong>BEAT</strong></td><td><strong>128</strong></td><td><strong>12.10</strong></td><td><strong>49.70</strong></td><td><strong>4.61</strong></td><td><strong>27.77</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="protocol-copy"><strong>Protocol reported in the paper:</strong> FP32 inference, <strong>batch size 4</strong>, 128-frame clips, NVIDIA B200; latency reported as the median over seven runs. Table values and this protocol description are reproduced from <a href="/assets/docs/beat-paper.pdf#page=11">Table 2</a>.</p>
+        <p class="protocol-copy"><strong>Measurement provenance:</strong> The previously audited timing record used batch size 1, whereas the paper states batch size 4. This page follows the paper's reported table; batch-size-4 timings have not been independently verified. The displayed kFPS values equal <code>128 / latency(ms)</code> and should not be interpreted as verified four-clip-batch throughput.</p>
       </div>
     </section>
 
@@ -182,7 +201,7 @@
         <p class="subtitle is-6 has-text-centered table-intro">The adapter and MPPL are toggled within the same training and evaluation pipeline.</p>
         <div class="table-container beat-table-wrap compact-table" tabindex="0" role="region" aria-label="Adapter and MPPL ablation">
           <table class="table is-fullwidth is-hoverable beat-table">
-            <caption>Table 2. Individual and combined effects of the proposed components.</caption>
+            <caption>Table 3. Individual and combined effects of the TCN adapter and MPPL.</caption>
             <thead><tr><th>Configuration</th><th class="has-text-centered">Adapter</th><th class="has-text-centered">MPPL</th><th class="has-text-right">MAE ↓</th><th class="has-text-right">RMSE ↓</th><th class="has-text-right">MAPE (%) ↓</th><th class="has-text-right"><em>r</em> ↑</th></tr></thead>
             <tbody>
               <tr><td>Backbone control</td><td>—</td><td>—</td><td>8.83</td><td>12.63</td><td>11.65</td><td>0.83</td></tr>
@@ -193,23 +212,6 @@
           </table>
         </div>
         <p class="has-text-centered control-note">“Backbone control” is the retained architecture trained with the common waveform-plus-spectral objective; it is not an official reproduction of the published PulseFormer result.</p>
-      </div>
-    </section>
-
-    <section class="section efficiency-section">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Efficiency</h2>
-        <div class="table-container beat-table-wrap compact-table" tabindex="0" role="region" aria-label="Efficiency comparison">
-          <table class="table is-fullwidth is-hoverable beat-table">
-            <caption>Table 3. Forward-inference efficiency on an NVIDIA B200.</caption>
-            <thead><tr><th>Model</th><th class="has-text-right">Parameters (M)</th><th class="has-text-right">MAC-equiv. (G)</th><th class="has-text-right">Latency (ms/clip) ↓</th><th class="has-text-right">Eq. kFPS ↑</th></tr></thead>
-            <tbody>
-              <tr class="reference-row"><td>PulseFormer architecture</td><td>12.077</td><td>49.687</td><td>4.01</td><td>31.94</td></tr>
-              <tr class="ours-row"><td><strong>BEAT</strong></td><td><strong>12.096</strong></td><td><strong>49.700</strong></td><td><strong>4.61</strong></td><td><strong>27.77</strong></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="protocol-copy">FP32 eager forward inference, batch size 1, GPU-resident <code>1 × 1 × 128 × 48 × 128</code> input, 100 warm-up iterations, and the median of 1,400 CUDA-event timings. Equivalent kFPS is <code>128 / latency</code>; it is input-frame-equivalent throughput, not end-to-end camera-stream throughput.</p>
       </div>
     </section>
 
