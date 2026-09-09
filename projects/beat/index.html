@@ -9,7 +9,7 @@
   <meta property="og:description" content="Location-preserving temporal refinement and pulse-phase supervision for egocentric NIR physiological sensing.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://juhapark-26.github.io/projects/beat/">
-  <meta property="og:image" content="https://juhapark-26.github.io/assets/images/beat.png">
+  <meta property="og:image" content="https://juhapark-26.github.io/assets/images/beat-main.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://juhapark-26.github.io/projects/beat/">
   <title>BEAT: Bottleneck-Enhanced Adaptive Temporal Learning</title>
@@ -53,9 +53,9 @@
 
               <div class="column has-text-centered publication-links" aria-label="Project resources">
                 <span class="link-block">
-                  <span class="external-link button is-normal is-rounded is-dark is-static" aria-disabled="true">
-                    <span class="icon" aria-hidden="true">▤</span><span>Paper · Coming Soon</span>
-                  </span>
+                  <a class="external-link button is-normal is-rounded is-dark" href="/assets/docs/beat-paper.pdf" type="application/pdf" target="_blank" rel="noopener noreferrer">
+                    <span class="icon" aria-hidden="true">▤</span><span>Paper (PDF)</span>
+                  </a>
                 </span>
                 <span class="link-block">
                   <a class="external-link button is-normal is-rounded is-dark" href="https://github.com/juhapark-26/juhapark-26.github.io/tree/main/code/beat" target="_blank" rel="noopener noreferrer">
@@ -78,9 +78,12 @@
       <div class="container is-max-desktop">
         <div class="hero-body">
           <figure class="main-figure">
-            <img src="/assets/images/beat.png" alt="BEAT architecture: IMU-conditioned NIR video encoder, location-wise bottleneck DW-TCN adapter, temporal decoder, and MPPL supervision" width="1176" height="617">
+            <a href="/assets/docs/beat-main.pdf" type="application/pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the full-resolution BEAT architecture figure PDF">
+              <img src="/assets/images/beat-main.png" alt="BEAT architecture: IMU-conditioned NIR video encoder, location-wise bottleneck DW-TCN adapter, temporal decoder, and MPPL supervision" width="2800" height="738" fetchpriority="high">
+            </a>
             <figcaption>
               <strong>Figure 1. BEAT architecture.</strong> The PulseFormer-derived video/IMU backbone and temporal decoder are retained. BEAT inserts a shared location-wise DW-TCN at the spatially structured bottleneck before global pooling and adds Multi-Lag Pulse-Phase Progression Loss (MPPL).
+              <a href="/assets/docs/beat-main.pdf" type="application/pdf" target="_blank" rel="noopener noreferrer">Full-resolution figure (PDF)</a>.
             </figcaption>
           </figure>
           <h2 class="subtitle has-text-centered teaser-caption">
