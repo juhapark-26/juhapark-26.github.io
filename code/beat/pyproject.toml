@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "beat-egoppg"
+version = "0.1.0"
+description = "BEAT: bottleneck temporal adaptation and multi-lag pulse-phase supervision"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy==1.26.4", "scipy==1.14.0", "scikit-learn==1.5.1",
+  "PyYAML==6.0.1", "tqdm==4.66.5", "matplotlib==3.9.2",
+  "neurokit2==0.2.9", "pandas==2.2.2", "opencv-python==4.10.0.84"
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+
+[project.urls]
+Homepage = "https://juhapark-26.github.io/projects/beat/"
+Source = "https://github.com/juhapark-26/juhapark-26.github.io/tree/main/code/beat"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

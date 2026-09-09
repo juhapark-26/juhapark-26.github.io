@@ -1,0 +1,89 @@
+# Factorial ablation A0L0: original PulseFormer, no DW-TCN adapter, CPV disabled.
+experiment:
+  name: "Adapter-loss ablation A0L0: Original PulseFormer + waveform + spectral"
+  output_name: "backbone_control"
+  seed: 0
+
+paths:
+  source_root: "third_party/egoPPG"
+  preprocessed_data: "data/preprocessed"
+  preprocessing_config: null  # Use the external official egoPPG metadata.
+  output_root: "outputs"
+
+initialization:
+  mode: fresh_paper
+  seed: 0
+  imagenet_cache_path: null  # Locally cached torchvision ImageNet weights.
+
+data:
+  chunk_length: 128
+  downsampling: 1
+  number_of_folds: 5
+  tasks_to_use: [video, office, kitchen, dancing, bike, walking]
+
+model:
+  name: pulseformer_original
+  temporal_mixer:
+    type: original
+    insertion_point: original
+    apply_per_spatial_location: false
+    channels: null
+    kernel_size: 3
+    dilations: [1, 2, 4, 8]
+    normalization: group_norm
+    activation: silu
+    dropout: 0.1
+    causal: false
+    layer_scale: {enabled: true, init: 1.0e-3}
+    pointwise_glu: {enabled: true, expansion: 2}
+    residual_output: {enabled: true, zero_init: true}
+
+loss:
+  name: motion_disentangled_multi_domain
+  implementation_version: mdm_v1
+  waveform:
+    normalization: batch_global_z
+    epsilon: 1.0e-8
+  spectral:
+    enabled: true
+    weight: 0.1
+    sampling_rate_hz: 30
+    band_hz: [0.7, 2.8]
+    n_fft: 128
+    hann_periodic: true
+    temperature: 1.0
+    power_epsilon: 1.0e-8
+  toml:
+    enabled: false
+    weight: 0.0
+    max_lag_samples: 8
+    ridge: 1.0e-3
+    epsilon: 1.0e-8
+    lag_padding: zero
+    standardize_motion: false
+    motion_gate: uniform
+
+training:
+  epochs: 100
+  trainable_scope: full
+  batch_size: 4
+  num_workers: 16
+  amp: false
+  optimizer:
+    name: Adam
+    learning_rate: 9.0e-4
+  scheduler:
+    name: OneCycleLR
+    max_lr: 9.0e-4
+
+validation:
+  batch_size: 4
+  num_workers: 16
+  selection_metric: waveform
+
+evaluation:
+  batch_size: 1
+  num_workers: 16
+  fs: 30
+  window_seconds: 60
+  hr_method: "Peak_Detection"

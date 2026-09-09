@@ -58,9 +58,9 @@
                   </span>
                 </span>
                 <span class="link-block">
-                  <span class="external-link button is-normal is-rounded is-dark is-static" aria-disabled="true">
-                    <span class="icon" aria-hidden="true">⌘</span><span>Code · Coming Soon</span>
-                  </span>
+                  <a class="external-link button is-normal is-rounded is-dark" href="https://github.com/juhapark-26/juhapark-26.github.io/tree/main/code/beat" target="_blank" rel="noopener noreferrer">
+                    <span class="icon" aria-hidden="true">⌘</span><span>Code</span>
+                  </a>
                 </span>
                 <span class="link-block">
                   <a class="external-link button is-normal is-rounded is-dark" href="#results">
@@ -219,6 +219,19 @@
               <p>Current evidence is limited to egoPPG-DB. The adapter is non-causal and is therefore not a strictly streaming implementation. MPPL supervises local phase progression, but direct beat-timing, short-window HR, and motion-stratified validation should be reported separately before making those empirical claims.</p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="code">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Code &amp; Reproduction</h2>
+        <div class="content">
+          <p>The <a href="https://github.com/juhapark-26/juhapark-26.github.io/tree/main/code/beat">source-only BEAT implementation</a> includes the shared bottleneck DW-TCN adapter, MPPL, reproducible configurations, training and evaluation entry points, and synthetic CPU tests.</p>
+          <p>The original PulseFormer backbone, MITA, preprocessing and HR evaluator are used through a separately obtained, pinned <a href="https://github.com/eth-siplab/egoPPG/tree/5bb8437a13bfa4ee8ced89126dec66db4c40f4c0" target="_blank" rel="noopener noreferrer">official egoPPG checkout</a>. The adapter and loss extend this backbone; they do not replace MITA.</p>
+          <p>No trained weights, checkpoints, optimizer state, raw or preprocessed recordings, participant metadata, or experiment logs are distributed. Public initialization weights and egoPPG-DB must be obtained independently under their applicable terms.</p>
+          <p><a href="https://github.com/juhapark-26/juhapark-26.github.io/tree/main/code/beat#quick-start">Installation &amp; training</a> · <a href="https://github.com/juhapark-26/juhapark-26.github.io/blob/main/code/beat/METHOD.md">Implementation details</a> · <a href="https://github.com/juhapark-26/juhapark-26.github.io/blob/main/code/beat/RELEASE_SCOPE.md">Release scope</a></p>
+          <p class="control-note">The legacy code identifier <code>cpv</code> denotes the paper's Multi-Lag Pulse-Phase Progression Loss (MPPL). Hyperparameter settings are included for reproduction; learned parameter tensors are not.</p>
         </div>
       </div>
     </section>
