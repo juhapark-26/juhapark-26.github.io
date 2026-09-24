@@ -84,7 +84,7 @@
             <a class="profile-link" href="https://github.com/juhapark-26" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7.4A5.8 5.8 0 0 0 19.3 3 5.4 5.4 0 0 0 19.1 0S17.9-.4 15 1.5a14 14 0 0 0-6 0C6.1-.4 4.9 0 4.9 0a5.4 5.4 0 0 0-.2 3A5.8 5.8 0 0 0 3.2 7.1c0 5.8 3.5 7 6.8 7.4A4.8 4.8 0 0 0 9 18v4"/><path d="M9 19c-3 .9-3-1.5-4.2-2"/></svg><span>GitHub</span>
             </a>
-            <a class="profile-link" href="https://www.linkedin.com/in/%EC%A3%BC%ED%95%98-%EB%B0%95-b427122b3/" target="_blank" rel="noopener noreferrer">
+            <a class="profile-link" href="https://www.linkedin.com/in/juha-park-b427122b3/" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9v10M6 5.5v.01M10.5 19V9m0 4.5c1-5 7.5-5.3 7.5.8V19"/></svg><span>LinkedIn</span>
             </a>
             <a class="profile-link" href="https://scholar.google.com/citations?user=6KtKTRj5VfkC" target="_blank" rel="noopener noreferrer">
@@ -153,24 +153,23 @@
         </div>
 
         <div class="filter-bar" role="group" aria-label="Filter publications" data-reveal>
-          <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All <span>8</span></button>
+          <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All <span>9</span></button>
           <button class="filter-button" type="button" data-filter="physiological" aria-pressed="false">Physiological Sensing <span>3</span></button>
-          <button class="filter-button" type="button" data-filter="medical" aria-pressed="false">Medical Imaging <span>3</span></button>
-          <button class="filter-button" type="button" data-filter="segmentation" aria-pressed="false">Vision Segmentation <span>5</span></button>
+          <button class="filter-button" type="button" data-filter="medical" aria-pressed="false">Medical Imaging <span>4</span></button>
+          <button class="filter-button" type="button" data-filter="segmentation" aria-pressed="false">Vision Segmentation <span>6</span></button>
           <button class="filter-button" type="button" data-filter="distillation" aria-pressed="false">Knowledge Distillation <span>3</span></button>
         </div>
-        <p class="sr-only" aria-live="polite" aria-atomic="true" data-filter-status>Showing all 8 works.</p>
+        <p class="sr-only" aria-live="polite" aria-atomic="true" data-filter-status>Showing all 9 works.</p>
 
         <div class="publication-list" data-publications>
           <article class="publication-card" data-topics="physiological" data-primary="physiological" data-reveal>
             <div class="publication-image"><img src="assets/images/pulsepath.png" alt="PulsePath two-stage generative waveform refinement architecture" loading="lazy" width="969" height="516"></div>
             <div class="publication-content">
-              <div class="publication-meta"><span class="venue">Sensors</span><span>2026 · Under Review</span></div>
+              <div class="publication-meta"><span class="venue">Sensors</span><span>2026</span></div>
               <h3>PulsePath: Two-Stage Generative Waveform Refinement for Robust Remote Photoplethysmography Estimation</h3>
               <p class="authors"><strong>Juha Park</strong>, Seungmin Oh, Sang Jun Lee*</p>
               <p class="paper-summary">A two-stage framework combining flow matching and residual diffusion to refine robust rPPG waveforms.</p>
               <div class="paper-tags"><span data-tone="sensing">Remote PPG</span><span data-tone="method">Generative Modeling</span><span data-tone="sensing">Waveform Refinement</span></div>
-              <span class="status-badge">UNDER REVIEW</span>
             </div>
           </article>
 
@@ -196,6 +195,26 @@
               <p class="paper-summary">Pulse-rate-variability guidance meets selective state-space modeling for camera-based stress recognition.</p>
               <div class="paper-tags"><span data-tone="human">Stress Estimation</span><span data-tone="method">State Space Model</span><span data-tone="sensing">rPPG</span></div>
               <div class="paper-links"><a href="https://github.com/juhapark-26/PRISSM" target="_blank" rel="noreferrer">Code <span>↗</span></a></div>
+            </div>
+          </article>
+
+          <article class="publication-card" data-topics="medical segmentation" data-primary="medical" data-reveal>
+            <div class="publication-image publication-model-visual" role="img" aria-label="MedSAM and DeepLabv3+ comparison for maxillary sinus segmentation">
+              <div class="model-visual-copy">
+                <span class="model-visual-kicker">Panoramic radiographs</span>
+                <strong>MedSAM</strong>
+                <span class="model-visual-vs">compared with</span>
+                <strong>DeepLabv3+</strong>
+                <span class="model-visual-note">Maxillary sinus segmentation</span>
+              </div>
+            </div>
+            <div class="publication-content">
+              <div class="publication-meta"><span class="venue">BMC Oral Health</span><span>29 Aug 2026</span></div>
+              <h3>Deep Learning-Based Segmentation of the Maxillary Sinus on Panoramic Radiographs Using MedSAM and DeepLabv3+</h3>
+              <p class="authors">Yong Chan Park, Sang Jun Lee, Han-Gyeol Yeom, Wan Lee, <strong>Juha Park</strong>, Jiho Choi, Byung-Do Lee*</p>
+              <p class="paper-summary">A clinical comparison of MedSAM and DeepLabv3+ for automated maxillary sinus segmentation in 1,046 panoramic radiographs.</p>
+              <div class="paper-tags"><span data-tone="medical">Medical Imaging</span><span data-tone="medical">Panoramic X-ray</span><span data-tone="vision">Segmentation</span></div>
+              <div class="paper-links"><a href="https://doi.org/10.1186/s12903-026-09746-w" target="_blank" rel="noreferrer">Paper <span>↗</span></a></div>
             </div>
           </article>
 
@@ -302,7 +321,7 @@
             <p class="section-kicker">04 / RECOGNITION</p>
             <h2 id="awards-title">Awards &amp; Honors</h2>
           </div>
-          <p>10 awards and honors in research, AI, engineering design, entrepreneurship, internships, and mentoring (2022–2025).</p>
+          <p>11 awards and honors in research funding, AI, engineering design, entrepreneurship, internships, and mentoring.</p>
         </div>
 
         <section class="award-showcase" aria-labelledby="selected-honors-title" data-reveal>
@@ -311,7 +330,7 @@
               <p>Representative achievements</p>
               <h3 id="selected-honors-title">Selected honors</h3>
             </div>
-            <span>Selected from 10 awards</span>
+            <span>Selected from 11 awards</span>
           </div>
 
           <div class="award-showcase-grid">
@@ -362,9 +381,10 @@
             <button class="award-keyword award-keyword-global" type="button" data-award-keyword="idea-design" aria-pressed="false">Idea &amp; Design <span aria-hidden="true">3</span></button>
             <button class="award-keyword award-keyword-global" type="button" data-award-keyword="startup" aria-pressed="false">Startup <span aria-hidden="true">2</span></button>
             <button class="award-keyword award-keyword-global" type="button" data-award-keyword="big-data" aria-pressed="false">Big Data <span aria-hidden="true">2</span></button>
+            <button class="award-keyword award-keyword-global" type="button" data-award-keyword="national" aria-pressed="false">National <span aria-hidden="true">2</span></button>
             <button class="award-reset" type="button" data-award-reset disabled>Reset</button>
           </div>
-          <p class="award-explorer-status" role="status" aria-live="polite" aria-atomic="true" data-award-status>Four keywords are shared by two or more awards. Select one to highlight every match.</p>
+          <p class="award-explorer-status" role="status" aria-live="polite" aria-atomic="true" data-award-status>Five keywords are shared by two or more awards. Select one to highlight every match.</p>
         </div>
 
         <section class="award-record" aria-labelledby="additional-awards-title" data-reveal>
@@ -373,10 +393,11 @@
               <p>Complete record</p>
               <h3 id="additional-awards-title">Additional recognitions</h3>
             </div>
-            <span>10 awards · total</span>
+            <span>11 awards · total</span>
           </div>
 
           <ul class="award-list">
+            <li class="award-list-item" data-award-entry data-award-keywords="national"><time datetime="2026-09">2026</time><span class="award-list-title"><strong>Master’s Student Research Encouragement Grant</strong><small>Science &amp; Engineering Academic Research Support Program · Sep 2026–Aug 2027</small></span><span class="award-list-institution">National Research Foundation of Korea</span><div class="award-keywords" role="group" aria-label="Keywords for Master’s Student Research Encouragement Grant"><button class="award-keyword" type="button" data-award-keyword="national" aria-pressed="false">National</button></div><a class="award-list-link" href="https://sites.google.com/jbnu.ac.kr/juhapark/juha-park#h.fdah9a6vryl1" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
             <li class="award-list-item" data-award-entry data-award-keywords="mentoring"><time datetime="2025">2025</time><span class="award-list-title"><strong>Excellence Award</strong><small>Mentoring Program</small></span><span class="award-list-institution">Jeonbuk National University</span><div class="award-keywords" role="group" aria-label="Keywords for Mentoring Program Excellence Award"><button class="award-keyword" type="button" data-award-keyword="mentoring" aria-pressed="false">Mentoring</button></div><a class="award-list-link" href="https://drive.google.com/file/d/1r95gcIKCA3kaRhlyfpQQwm-DvO-0gbQ3/view?usp=sharing" target="_blank" rel="noopener noreferrer">Certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
             <li class="award-list-item" id="award-outstanding-paper" tabindex="-1" data-award-entry data-award-keywords="paper-award medical-imaging panoramic-x-ray in-korean"><time datetime="2024">2024</time><span class="award-list-title"><strong>Outstanding Paper Award</strong><small>Maxillary Sinus Detection in Panoramic X-ray Images</small></span><span class="award-list-institution">IEMEK Fall Conference</span><div class="award-keywords" role="group" aria-label="Keywords for Outstanding Paper Award"><button class="award-keyword" type="button" data-award-keyword="paper-award" aria-pressed="false">Paper Award</button><button class="award-keyword" type="button" data-award-keyword="medical-imaging" aria-pressed="false">Medical Imaging</button><button class="award-keyword" type="button" data-award-keyword="panoramic-x-ray" aria-pressed="false">Panoramic X-ray</button><button class="award-keyword" type="button" data-award-keyword="in-korean" aria-pressed="false">In Korean</button></div><a class="award-list-link" href="https://drive.google.com/file/d/1rdbNjetvJwWYzXifVCqCMQUooXWzAVH1/view?usp=sharing" target="_blank" rel="noopener noreferrer">Certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
             <li class="award-list-item" data-award-entry data-award-keywords="internship big-data"><time datetime="2024">2024</time><span class="award-list-title"><strong>Outstanding Intern</strong><small>Big Data Innovation Convergence College</small></span><span class="award-list-institution">Seoul National University</span><div class="award-keywords" role="group" aria-label="Keywords for Outstanding Intern"><button class="award-keyword" type="button" data-award-keyword="internship" aria-pressed="false">Internship</button><button class="award-keyword" type="button" data-award-keyword="big-data" aria-pressed="false">Big Data</button></div><a class="award-list-link" href="https://drive.google.com/file/d/15AT0RC0QEVUcM3RWWNsA09WSCdyaFNg6/view?usp=sharing" target="_blank" rel="noopener noreferrer">Certificate <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
@@ -402,7 +423,7 @@
             <span class="copy-label">COPY</span>
           </button>
           <div class="contact-links">
-            <a href="https://www.linkedin.com/in/%EC%A3%BC%ED%95%98-%EB%B0%95-b427122b3/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/in/juha-park-b427122b3/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
             <a href="https://github.com/juhapark-26" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
             <a href="https://scholar.google.com/citations?user=6KtKTRj5VfkC" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
             <a href="https://drive.google.com/file/d/1irvOl0zYE1BjlXhD-yXAW3GVvRcNmJZB/view?usp=sharing" target="_blank" rel="noopener noreferrer">CV ↗</a>

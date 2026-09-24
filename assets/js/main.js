@@ -211,7 +211,7 @@
 
     const message = keyword
       ? `${awardKeywordLabels[keyword] || keyword} highlights ${matchingCount} of ${awardEntries.length} awards. All awards remain visible.`
-      : 'Four keywords are shared by two or more awards. Select one to highlight every match.';
+      : 'Five keywords are shared by two or more awards. Select one to highlight every match.';
 
     if (announce || awardStatus.textContent !== message) awardStatus.textContent = message;
   };
