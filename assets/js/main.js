@@ -131,14 +131,6 @@
       }
 
       cardsInScope.sort((a, b) => {
-        if (sortMode === 'featured') {
-          const rankDifference = Number(a.dataset.sortFeatured || 999) - Number(b.dataset.sortFeatured || 999);
-          return rankDifference || comparePublicationDate(a, b) || sortBySource(a, b);
-        }
-        if (sortMode === 'first-author') {
-          const authorDifference = Number(b.dataset.firstAuthor === 'true') - Number(a.dataset.firstAuthor === 'true');
-          return authorDifference || comparePublicationDate(a, b) || sortBySource(a, b);
-        }
         return comparePublicationDate(a, b) || sortBySource(a, b);
       });
 
