@@ -91,7 +91,6 @@
   const publicationList = document.querySelector('[data-publications]');
   const cards = [...(publicationList?.querySelectorAll('[data-topics]') ?? [])];
   const publicationGroups = [...(publicationList?.querySelectorAll('[data-publication-group]') ?? [])];
-  const publicationSortControls = [...document.querySelectorAll('[data-publication-sort]')];
   const publicationSortScopes = [...document.querySelectorAll('[data-publication-sort-scope]')];
   const publicationSource = new Map();
 
@@ -101,7 +100,7 @@
     });
   });
 
-  let activePublicationSort = 'default';
+  let activePublicationSort = 'date';
 
   const comparePublicationDate = (a, b) => {
     const dateA = a.dataset.sortDate || '';
@@ -112,23 +111,12 @@
     return dateB.localeCompare(dateA);
   };
 
-  const applyPublicationSort = (sortMode = 'default') => {
-    activePublicationSort = sortMode;
-
+  const applyPublicationSort = () => {
     publicationSortScopes.forEach((scope) => {
       const cardsInScope = [...scope.querySelectorAll('.publication-card')];
       const groups = [...scope.querySelectorAll('[data-publication-group]')];
       const flatList = scope.querySelector('[data-publication-flat-list]');
       const sortBySource = (a, b) => publicationSource.get(a).index - publicationSource.get(b).index;
-
-      if (sortMode === 'default') {
-        cardsInScope.sort(sortBySource).forEach((card) => publicationSource.get(card).parent.append(card));
-        if (flatList) flatList.hidden = true;
-        groups.forEach((group) => {
-          group.hidden = ![...group.querySelectorAll('.publication-card')].some((card) => !card.hidden);
-        });
-        return;
-      }
 
       cardsInScope.sort((a, b) => {
         return comparePublicationDate(a, b) || sortBySource(a, b);
@@ -139,7 +127,6 @@
       if (flatList) flatList.hidden = false;
     });
 
-    publicationSortControls.forEach((control) => { control.value = sortMode; });
   };
   const filterStatus = document.querySelector('[data-filter-status]');
   const filterLabels = {
@@ -200,11 +187,9 @@
       if (visible) visibleCount += 1;
     });
 
-    if (activePublicationSort === 'default') {
-      publicationGroups.forEach((group) => {
-        group.hidden = ![...group.querySelectorAll('[data-topics]')].some((card) => !card.hidden);
-      });
-    }
+    publicationGroups.forEach((group) => {
+      group.hidden = ![...group.querySelectorAll('[data-topics]')].some((card) => !card.hidden);
+    });
 
     updateFilterStatus(button, visibleCount, announce);
   };
@@ -216,10 +201,7 @@
   const initialFilter = filters.find((button) => button.getAttribute('aria-pressed') === 'true') || filters[0];
   applyFilter(initialFilter, false);
 
-  publicationSortControls.forEach((control) => {
-    control.addEventListener('change', () => applyPublicationSort(control.value));
-  });
-  applyPublicationSort(publicationSortControls[0]?.value || 'default');
+  applyPublicationSort();
 
   const awardExplorer = document.querySelector('[data-award-explorer]');
   const awardEntries = [...(awardExplorer?.querySelectorAll('[data-award-entry]') ?? [])];
