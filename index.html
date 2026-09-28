@@ -160,13 +160,25 @@
           <button class="filter-button" type="button" data-filter="segmentation" aria-pressed="false">Vision Segmentation <span>2</span></button>
           <button class="filter-button" type="button" data-filter="distillation" aria-pressed="false">Knowledge Distillation <span>1</span></button>
         </div>
+        <div class="publication-sort-row" data-reveal>
+          <p class="publication-sort-note">Sort across journal and conference types.</p>
+          <label class="publication-sort">
+            <span>Sort order</span>
+            <select data-publication-sort aria-label="Sort all publications">
+              <option value="default">Default (current order)</option>
+              <option value="date">Year (publication / conference date)</option>
+              <option value="featured">Representative work</option>
+              <option value="first-author">First-author first</option>
+            </select>
+          </label>
+        </div>
         <p class="sr-only" aria-live="polite" aria-atomic="true" data-filter-status>Showing all 5 works.</p>
 
-        <div class="publication-groups" data-publications>
+        <div class="publication-groups" data-publications data-publication-sort-scope>
           <div class="publication-group" data-publication-group>
             <h3 class="publication-group-title">Journal Articles</h3>
             <div class="publication-list">
-          <article class="publication-card" data-topics="physiological" data-primary="physiological" data-reveal>
+          <article class="publication-card" data-topics="physiological" data-primary="physiological" data-sort-date="2026-09" data-first-author="true" data-sort-featured="1" data-reveal>
             <div class="publication-image"><img src="assets/images/pulsepath.png" alt="PulsePath two-stage generative waveform refinement architecture" loading="lazy" width="969" height="516"></div>
             <div class="publication-content">
               <div class="publication-meta"><span class="venue">Sensors</span><span>2026 · 26(19), 6105</span></div>
@@ -178,7 +190,7 @@
             </div>
           </article>
 
-          <article class="publication-card" data-topics="medical segmentation" data-primary="medical" data-reveal>
+          <article class="publication-card" data-topics="medical segmentation" data-primary="medical" data-sort-date="2026-08-29" data-first-author="false" data-sort-featured="3" data-reveal>
             <div class="publication-image publication-model-visual" role="img" aria-label="MedSAM and DeepLabv3+ comparison for maxillary sinus segmentation">
               <div class="model-visual-copy">
                 <span class="model-visual-kicker">Panoramic radiographs</span>
@@ -198,7 +210,7 @@
             </div>
           </article>
 
-          <article class="publication-card" data-topics="medical segmentation distillation" data-primary="medical" data-reveal>
+          <article class="publication-card" data-topics="medical segmentation distillation" data-primary="medical" data-sort-date="2026-06-13" data-first-author="true" data-sort-featured="2" data-reveal>
             <div class="publication-image"><img src="assets/images/maxillary-kd.jpg" alt="Weighted knowledge distillation architecture for maxillary sinus segmentation" loading="lazy" width="1280" height="701"></div>
             <div class="publication-content">
               <div class="publication-meta"><span class="venue">Scientific Reports</span><span>13 Jun 2026</span></div>
@@ -210,13 +222,12 @@
             </div>
           </article>
 
-        </div>
             </div>
           </div>
           <div class="publication-group" data-publication-group>
             <h3 class="publication-group-title">Conference Papers</h3>
             <div class="publication-list">
-              <article class="publication-card" data-topics="physiological" data-primary="physiological" data-reveal>
+              <article class="publication-card" data-topics="physiological" data-primary="physiological" data-sort-date="2026-11" data-first-author="true" data-sort-featured="1" data-reveal>
                 <div class="publication-image"><img src="assets/images/prissm.png" alt="PRISSM architecture for non-contact stress estimation" loading="lazy" width="1254" height="591"></div>
                 <div class="publication-content">
                   <div class="publication-meta"><span class="venue">BMVC</span><span>Nov 2026</span></div>
@@ -227,7 +238,7 @@
                   <div class="paper-links"><a href="https://github.com/juhapark-26/PRISSM" target="_blank" rel="noreferrer">Code <span>↗</span></a></div>
                 </div>
               </article>
-              <article class="publication-card" data-topics="physiological" data-primary="physiological" data-reveal>
+              <article class="publication-card" data-topics="physiological" data-primary="physiological" data-sort-date="2026-09" data-first-author="true" data-sort-featured="2" data-reveal>
                 <div class="publication-image"><img src="assets/images/beat.png" alt="BEAT architecture for heart rate estimation from egocentric NIR eye videos" loading="lazy" width="1176" height="617"></div>
                 <div class="publication-content">
                   <div class="publication-meta"><span class="venue">ECCV Workshop · Wearable AI</span><span>Sep 2026</span></div>
@@ -241,6 +252,7 @@
               </article>
             </div>
           </div>
+          <div class="publication-list" data-publication-flat-list hidden></div>
         </div>
       </div>
     </section>
@@ -254,12 +266,24 @@
           </div>
           <p>Domestic journal and conference papers published or presented in Korean.</p>
         </div>
+        <div class="publication-sort-row korean-sort-row" data-reveal>
+          <p class="publication-sort-note">Sort across journal and conference types.</p>
+          <label class="publication-sort">
+            <span>Sort order</span>
+            <select data-publication-sort aria-label="Sort all publications">
+              <option value="default">Default (current order)</option>
+              <option value="date">Year (publication / conference date)</option>
+              <option value="featured">Representative work</option>
+              <option value="first-author">First-author first</option>
+            </select>
+          </label>
+        </div>
 
-        <div class="publication-groups" data-publications-korean>
-          <div class="publication-group">
+        <div class="publication-groups" data-publications-korean data-publication-sort-scope>
+          <div class="publication-group" data-publication-group>
             <h3 class="publication-group-title">Journal Articles</h3>
             <div class="publication-list">
-          <article class="publication-card" data-primary="distillation" data-reveal>
+          <article class="publication-card" data-primary="distillation" data-sort-date="2025-09" data-first-author="false" data-sort-featured="2" data-reveal>
             <div class="publication-image"><img src="assets/images/golf-kd.png" alt="Channel-attention knowledge distillation for golf-course segmentation" loading="lazy" width="1280" height="534"></div>
             <div class="publication-content">
               <div class="publication-meta"><span class="venue">Journal of Institute of Control, Robotics and Systems</span><span>Sep 2025</span></div>
@@ -271,7 +295,7 @@
             </div>
           </article>
 
-          <article class="publication-card" data-primary="medical" data-reveal>
+          <article class="publication-card" data-primary="medical" data-sort-date="2025-04" data-first-author="true" data-sort-featured="1" data-reveal>
             <div class="publication-image"><img src="assets/images/unet-transformer.png" alt="Attention-based U-Net transformer for panoramic X-ray segmentation" loading="lazy" width="1280" height="701"></div>
             <div class="publication-content">
               <div class="publication-meta"><span class="venue">Journal of IEMEK</span><span>Apr 2025</span></div>
@@ -283,13 +307,12 @@
             </div>
           </article>
 
-        </div>
             </div>
           </div>
-          <div class="publication-group">
+          <div class="publication-group" data-publication-group>
             <h3 class="publication-group-title">Conference Papers</h3>
             <div class="publication-list">
-              <article class="publication-card compact-paper" data-primary="distillation" data-reveal>
+              <article class="publication-card compact-paper" data-primary="distillation" data-sort-date="2025-06-25" data-first-author="false" data-sort-featured="2" data-reveal>
                 <div class="conference-index"><span>CONFERENCE</span><strong>01</strong></div>
                 <div class="publication-content">
                   <div class="publication-meta"><span class="venue">40th ICROS Annual Conference</span><span>25–27 Jun 2025 · Poster</span></div>
@@ -300,7 +323,7 @@
                   <div class="paper-links"><a href="https://drive.google.com/file/d/1RWsY6p1ahTnfwQPt9HKbEDpkNfclALKT/view?usp=sharing" target="_blank" rel="noreferrer">Award <span>↗</span></a></div>
                 </div>
               </article>
-              <article class="publication-card compact-paper" data-primary="medical" data-reveal>
+              <article class="publication-card compact-paper" data-primary="medical" data-sort-date="2024-11-13" data-first-author="true" data-sort-featured="1" data-reveal>
                 <div class="conference-index"><span>CONFERENCE</span><strong>02</strong></div>
                 <div class="publication-content">
                   <div class="publication-meta"><span class="venue">IEMEK Fall Conference</span><span>13–16 Nov 2024 · Oral</span></div>
@@ -313,6 +336,7 @@
               </article>
             </div>
           </div>
+          <div class="publication-list" data-publication-flat-list hidden></div>
         </div>
       </div>
     </section>

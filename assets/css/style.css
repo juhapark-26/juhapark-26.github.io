@@ -229,10 +229,16 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .filter-button.is-active span { color: inherit; opacity: .88; }
 .publication-list { display: grid; gap: 20px; }
 .publication-groups { display: grid; gap: 42px; }
+.publication-list[data-publication-flat-list][hidden] { display: none; }
 .publication-group { display: grid; gap: 18px; }
 .publication-group-title { display: flex; align-items: center; gap: 14px; margin: 0; color: var(--muted); font-family: var(--font-mono); font-size: .82rem; font-weight: 650; letter-spacing: .1em; text-transform: uppercase; }
 .publication-group-title::after { content: ""; height: 1px; flex: 1; background: var(--line); }
 .publication-group[hidden] { display: none; }
+.publication-sort-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin: -22px 0 32px; }
+.publication-sort-note { margin: 0; color: var(--subtle); font-size: .78rem; }
+.publication-sort { display: flex; align-items: center; gap: 11px; color: var(--muted); font-family: var(--font-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; }
+.publication-sort select { min-height: 40px; max-width: min(100%, 290px); padding: 7px 34px 7px 12px; color: var(--text); border: 1px solid var(--line-strong); border-radius: 8px; background: var(--surface); font: 500 .8rem var(--font-body); letter-spacing: 0; text-transform: none; cursor: pointer; }
+.korean-sort-row { margin-top: 0; }
 .publication-card { --topic-color: var(--tone-sensing-solid); --topic-soft: var(--tone-sensing-bg); display: grid; grid-template-columns: minmax(290px, .82fr) 1.18fr; gap: 0; min-height: 310px; border: 1px solid var(--line); border-left: 3px solid var(--topic-color); border-radius: 14px; background: var(--surface); box-shadow: 0 4px 14px rgba(18, 29, 43, .05); overflow: hidden; transition: border-color .2s ease, box-shadow .2s ease; }
 .publication-card[data-primary="physiological"] { --topic-color: var(--tone-sensing-solid); --topic-soft: var(--tone-sensing-bg); }
 .publication-card[data-primary="medical"] { --topic-color: var(--tone-medical-solid); --topic-soft: var(--tone-medical-bg); }
@@ -511,6 +517,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
   .interest-list div { grid-template-columns: 34px 1fr; }
   .interest-list small { grid-column: 2; }
   .section-heading h2 { font-size: clamp(2.5rem, 12vw, 3.8rem); }
+  .publication-sort-row { align-items: stretch; flex-direction: column; gap: 10px; margin-top: -20px; }
+  .korean-sort-row { margin-top: 0; }
+  .publication-sort { align-items: flex-start; flex-direction: column; gap: 7px; }
+  .publication-sort select { width: 100%; max-width: none; }
   .filter-bar { flex-wrap: nowrap; margin-right: -16px; margin-left: -16px; padding: 0 16px 11px; overflow-x: auto; scroll-padding-left: 16px; scroll-snap-type: x proximity; scrollbar-width: thin; }
   .filter-button { flex: 0 0 auto; scroll-snap-align: start; }
   .publication-card, .compact-paper { display: block; }
