@@ -228,6 +228,11 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .filter-button.is-active::before { background: var(--filter-solid); }
 .filter-button.is-active span { color: inherit; opacity: .88; }
 .publication-list { display: grid; gap: 20px; }
+.publication-groups { display: grid; gap: 42px; }
+.publication-group { display: grid; gap: 18px; }
+.publication-group-title { display: flex; align-items: center; gap: 14px; margin: 0; color: var(--muted); font-family: var(--font-mono); font-size: .82rem; font-weight: 650; letter-spacing: .1em; text-transform: uppercase; }
+.publication-group-title::after { content: ""; height: 1px; flex: 1; background: var(--line); }
+.publication-group[hidden] { display: none; }
 .publication-card { --topic-color: var(--tone-sensing-solid); --topic-soft: var(--tone-sensing-bg); display: grid; grid-template-columns: minmax(290px, .82fr) 1.18fr; gap: 0; min-height: 310px; border: 1px solid var(--line); border-left: 3px solid var(--topic-color); border-radius: 14px; background: var(--surface); box-shadow: 0 4px 14px rgba(18, 29, 43, .05); overflow: hidden; transition: border-color .2s ease, box-shadow .2s ease; }
 .publication-card[data-primary="physiological"] { --topic-color: var(--tone-sensing-solid); --topic-soft: var(--tone-sensing-bg); }
 .publication-card[data-primary="medical"] { --topic-color: var(--tone-medical-solid); --topic-soft: var(--tone-medical-bg); }
@@ -260,10 +265,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .paper-links a:hover { color: var(--topic-color); }
 .status-badge { position: absolute; right: 29px; bottom: 29px; padding: 6px 9px; color: var(--tone-sensing-ink); border: 1px solid var(--tone-sensing-border); background: var(--surface); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .1em; }
 .status-blue { color: var(--tone-vision-ink); border-color: var(--tone-vision-border); }
-.compact-paper { grid-template-columns: 200px 1fr; min-height: 250px; }
-.conference-index { display: flex; flex-direction: column; justify-content: space-between; padding: 31px; background: var(--surface-2); border-right: 1px solid var(--line); }
+.compact-paper { grid-template-columns: 132px 1fr; min-height: 0; }
+.conference-index { display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: 22px; background: var(--surface-2); border-right: 1px solid var(--line); }
 .conference-index span { color: var(--topic-color); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .14em; }
-.conference-index strong { color: var(--line-strong); font-family: var(--font-mono); font-size: 5rem; font-weight: 400; line-height: 1; }
+.conference-index strong { color: var(--topic-color); font-family: var(--font-mono); font-size: .95rem; font-weight: 650; letter-spacing: .1em; line-height: 1; }
 .conference-detail { display: block; margin: 17px 0 0; padding-top: 15px; color: var(--muted); border-top: 1px solid var(--line); font-size: .82rem; line-height: 1.65; }
 .conference-detail strong { color: var(--text); font-weight: 600; }
 .conference-detail a { color: var(--text); border-bottom: 1px solid var(--accent); font-family: var(--font-mono); font-size: .75rem; text-transform: uppercase; }
@@ -481,7 +486,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
   .heading-row > p { margin-top: 23px; }
   .publication-card { grid-template-columns: 1fr; }
   .publication-image { min-height: auto; padding: 23px; border-right: 0; border-bottom: 1px solid var(--line); }
-  .compact-paper { grid-template-columns: 135px 1fr; }
+  .compact-paper { grid-template-columns: 125px 1fr; }
   .award-explorer { grid-template-columns: 1fr; }
   .award-explorer-status { grid-column: 1; }
   .award-showcase-grid { grid-template-columns: 1fr; }
@@ -509,8 +514,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
   .filter-bar { flex-wrap: nowrap; margin-right: -16px; margin-left: -16px; padding: 0 16px 11px; overflow-x: auto; scroll-padding-left: 16px; scroll-snap-type: x proximity; scrollbar-width: thin; }
   .filter-button { flex: 0 0 auto; scroll-snap-align: start; }
   .publication-card, .compact-paper { display: block; }
-  .conference-index { min-height: 105px; flex-direction: row; align-items: flex-start; }
-  .conference-index strong { font-size: 3rem; }
+  .conference-index { min-height: 0; flex-direction: row; align-items: center; justify-content: flex-start; gap: 12px; padding: 15px 20px; border-right: 0; border-bottom: 1px solid var(--line); }
   .publication-content { padding: 26px 21px 31px; }
   .paper-tags { padding-right: 0; }
   .status-badge { position: static; display: inline-block; margin-top: 20px; }

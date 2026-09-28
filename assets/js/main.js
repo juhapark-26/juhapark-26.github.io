@@ -90,6 +90,7 @@
   const filters = [...document.querySelectorAll('[data-filter]')];
   const publicationList = document.querySelector('[data-publications]');
   const cards = [...(publicationList?.querySelectorAll('[data-topics]') ?? [])];
+  const publicationGroups = [...(publicationList?.querySelectorAll('[data-publication-group]') ?? [])];
   const filterStatus = document.querySelector('[data-filter-status]');
   const filterLabels = {
     physiological: 'physiological sensing',
@@ -147,6 +148,10 @@
       const visible = cardMatchesFilter(card, category);
       card.hidden = !visible;
       if (visible) visibleCount += 1;
+    });
+
+    publicationGroups.forEach((group) => {
+      group.hidden = ![...group.querySelectorAll('[data-topics]')].some((card) => !card.hidden);
     });
 
     updateFilterStatus(button, visibleCount, announce);
